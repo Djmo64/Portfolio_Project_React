@@ -243,6 +243,7 @@
     padding: 5px;
     animation: glitch 1s linear infinite;
 }
+
 .passive-container li:before{
     animation: glitchTop 2s linear infinite;
     clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
@@ -253,7 +254,8 @@
     clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
     -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
   }
-  .passive-container li:before,
+ 
+.passive-container li:before,
   .passive-container li:after{
   content: attr(title);
   position: absolute;

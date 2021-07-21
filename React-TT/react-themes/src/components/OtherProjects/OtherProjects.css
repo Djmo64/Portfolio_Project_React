@@ -1,0 +1,10 @@
+.other-projects-container{
+    display: flex;
+    margin: 40px;
+    background: white;
+    border-radius: 5px;
+}
+.coming-soon{
+    color: gray;
+    justify-content: center !important;
+}

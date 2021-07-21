@@ -183,13 +183,13 @@ export default function ContactI(props) {
           onClick={() => setChoice(3)}
           className={Choice === 4 ? "link-container active1" : "link-container"}
         >
-          <h3>Links </h3>
+          <h3>Linkdin </h3>
         </div>
         <div
           onClick={() => setChoice(4)}
           className={Choice === 4 ? "link-container active1" : "link-container"}
         >
-          <h3>Fax </h3>
+          <h3>Github </h3>
         </div>
       </div>
       <div className="information-outer-container">

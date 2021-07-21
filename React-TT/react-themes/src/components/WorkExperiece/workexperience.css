@@ -51,6 +51,8 @@
 .icons{
     display: flex;
     justify-content: space-evenly;
+    margin-left: 20%;
+    margin-right: 20%;
 }
 .icons img{
     width: 35px;
@@ -61,3 +63,17 @@
 .workex-container{
     
 }
+.glass-container{
+    opacity: .75;
+    margin: 20px;
+}
+.glass-container:hover{
+    opacity: 1;
+    transform: scale(1.03);
+    transition: .5s ease;
+    color: gold;
+}
+.glass-container > .white-container:hover{
+    background: black;
+}
+
