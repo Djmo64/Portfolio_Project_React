@@ -1,8 +1,8 @@
 # Portfolio_Project_React
 
-React App showing UI designs and animations.
+React App with my overview and showing UI designs and animations.
 
-#Installation
+# Installation
 
 cd (change directory) into client then run 'npm install' to install dependencies.
 Run 'npm start' to start development for the front end.
