@@ -71,9 +71,36 @@ form button:hover{
     align-items: center;
 }
 .todo-list{
-    min-width: 30%;
+    min-width: 50%;
     list-style: none;
     padding-left: 0;
+}
+.todo-list-container{
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+.todo-list-container form{
+    min-height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0px;
+    position: sticky;
+    background: black;
+    border-radius: 5px;
+}
+.todo-list-container::-webkit-scrollbar{
+    width: 10px;
+    background: transparent;
+}
+.todo-list-container::-webkit-scrollbar-thumb{
+    background-color: gold;
+    border-radius: 20px;
+}
+.todo-list-container::-webkit-scrollbar-button{
+    height: 12px;
 }
 .todo{
     margin: 0.5rem;
@@ -126,3 +153,10 @@ form button:hover{
     opacity: 0;
 }
 /* TaskTracker */
+
+.Task-Tracker-container{
+    background-color: black;
+    height: 70vh;
+    margin: 20px;
+    border-radius: 5px;
+}

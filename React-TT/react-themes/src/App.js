@@ -28,7 +28,7 @@ function App() {
 
   
 
-  const route = ["Ocean", "Heavy Metal", "Garden", "Space"];
+  const route = ["Ocean", "Metal", "Garden", "Space"];
   const routes = route.map((r, index) => {
     return <div className='routeStyle' style={{transition: 'opacity .8s ease-in, transform .8s ease-in'}}><img className='lock' src={lock}/>{r}</div>;
   });
@@ -54,8 +54,8 @@ function App() {
       <nav className={theme}>
        <div className="banner">
         <h1>
-          <div className="DevName" style={{marginRight:'15px'}}>Darron's</div>
-          Web Developer Portfolio
+          <div className="DevName" style={{marginRight:'15px'}}>Darron Moore:</div>
+          Front End Web Developer
         </h1>
         <div className='inset-radius'></div>
         </div>

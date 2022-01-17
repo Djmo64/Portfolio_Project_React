@@ -19,7 +19,7 @@ export default function ContactI(props) {
     },
     {
       contact: "Mailing Address",
-      contactInfo: "205 Autumn trace court, Macon GA 31210",
+      contactInfo: "--- ------- ------- --",
       contactIcon: house,
     },
     {
