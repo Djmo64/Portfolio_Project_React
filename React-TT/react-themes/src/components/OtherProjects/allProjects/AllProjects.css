@@ -1,0 +1,128 @@
+.cdt-title{
+    justify-content: center;
+    background: black;
+    border-radius: 5px;
+     
+}
+.countdown-container{
+    background-image: url('./img/cybersplash.jpg');
+    margin: 100px;
+    height: 100vh;
+    background-size: cover;
+    background-position: center center;
+    border-radius: 5px;
+}
+.countdown{
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    height: 80%;
+    align-items: center;
+    margin: 0;
+}
+.c-time{
+    color: gold;
+    text-align: center;
+    font-size: xxx-large;
+    font-weight: bold;
+    width: 100px;
+    margin-bottom: 0;
+
+}
+.c-title{
+    color:gold
+}
+
+/* TaskTracker */
+header{
+    font-size: 1.5rem;
+}
+header,form{
+    min-height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+form input, form button{
+    padding: 0.5rem;
+    font-size: 2rem;
+    border: none;
+    background: white;
+}
+form input{
+    border-radius: 5px 0px 0px 5px;
+}
+form button{
+    
+    border-radius: 0px 5px 5px 0px;
+    color: gold;
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+form button:hover{
+    background: gold;
+    color: white;
+}
+
+.todo-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.todo-list{
+    min-width: 30%;
+    list-style: none;
+    padding-left: 0;
+}
+.todo{
+    margin: 0.5rem;
+    background: white;
+    color: black;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+    padding-left: 10px;
+    transition: all 0.5s ease;
+}
+.todo li{
+    flex: 1;
+}
+.remove-btn, .check-btn{
+    background: white;
+    color: gold;
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+.remove-btn:hover{ 
+    background: gold;
+    color: white;
+}
+.check-btn:hover{
+    background: green;
+    color: white;
+}
+.check-btn{
+    color: green;
+}
+.remove-btn{
+    border-radius: 0px 5px 5px 0px;
+}
+.fa-trash, .fa-check{
+    pointer-events: none;
+}
+.completed{
+    text-decoration: line-through;
+    background: lightgray;
+    color: gray;
+}
+.vanish{
+    transform: translateX(40px);
+    opacity: 0;
+}
+/* TaskTracker */

@@ -7,7 +7,7 @@ import BBanner from "../../assets/photos/black-banner.png";
 import stars from "../../assets/photos/stars.png";
 
 export default function Skills(props) {
-  const passives = ["Java", "Python", "MongoDB", "SQL", "Express.js", "Gimp"];
+  const passives = ["Java", "Redux", "MongoDB", "SQL", "Express.js", "Google Cloud"];
   const [Flipped, setFlipped] = useState(false);
 
   const p = passives.map((pass, index) => {
@@ -74,7 +74,7 @@ export default function Skills(props) {
               <img src={reactIcon} />
               <h1>Pocket-Dev</h1>
               <div className="backside-style">
-                <p>Pocket-Dev™ 2021</p>
+                <p>Pocket-Dev™ 2020</p>
               </div>
               
             </div>
