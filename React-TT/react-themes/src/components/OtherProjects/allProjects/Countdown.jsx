@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import '../allProjects/AllProjects.css'
 
 
-export default function CountDown(props){
+export function CountDown(props){
 
     
     
@@ -85,3 +85,4 @@ export default function CountDown(props){
         </div>
     )
 }
+

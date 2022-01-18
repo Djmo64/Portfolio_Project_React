@@ -1,15 +1,21 @@
 import { useState } from "react";
 import "../allProjects/AllProjects.css";
-// import "../allProjects/Task";
+import "../allProjects/TaskTracker.css";
+import {DayTimer} from "./SimpleTimer";
 
 export default function TaskTracker(props) {
 
 
   const [todoList,setTodoList] = useState([]);
-  const [task, setTask] = useState('')
+  const [task, setTask] = useState('');
+  const [val1, setVal1] = useState();
+  const [val2, setVal2] = useState();
   
   
-  
+  function setValues(v1, v2){
+    setVal1(v1);
+    setVal2(v2);
+  }
   
 
   return (
@@ -24,12 +30,20 @@ export default function TaskTracker(props) {
         </form>
 
         <div class="todo-container">
-          <ul class="todo-list" onClick={listAction}>{todoList}</ul>
+          <ul class="todo-list" onClick={listAction}>
+            {todoList.length > 0 ? todoList : <li style={{color: 'gray', textAlign: 'center'}}>Add Daily Tasks!</li>}
+            </ul>
         </div>
            
       </div>
       <div className="task-meter-container">
+        <div className="meter-grid">
+              Daily Grid
+              <div className="grid-blocks">
 
+              </div>
+        </div>
+        <DayTimer getValues={(hours, mins) => setValues(hours, mins)}/>
       </div>
       
         

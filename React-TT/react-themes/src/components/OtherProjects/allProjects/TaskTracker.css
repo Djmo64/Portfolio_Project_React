@@ -1,0 +1,20 @@
+.Task-Tracker-container{
+    background-color: black;
+    height: 70vh;
+    margin: 20px;
+    border-radius: 5px;
+    display: flex;
+}
+.meter-grid{
+    border: 2px solid gray;
+    color: gray;
+    width: 65%;
+    height: 50vh;
+    text-align-last: center;
+    margin-left: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+.task-meter-container{
+    flex-grow: 1;
+}

@@ -1,5 +1,5 @@
 import '../OtherProjects/OtherProjects.css'
-import CountDown from './allProjects/Countdown'
+import {CountDown} from './allProjects/Countdown'
 import TaskTracker from './allProjects/TaskTracker'
 
 

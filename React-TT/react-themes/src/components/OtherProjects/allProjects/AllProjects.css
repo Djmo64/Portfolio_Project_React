@@ -76,10 +76,12 @@ form button:hover{
     padding-left: 0;
 }
 .todo-list-container{
-    width: 50%;
+    
     height: 100%;
     overflow: hidden;
     overflow-y: scroll;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 .todo-list-container form{
     min-height: 20vh;
@@ -154,9 +156,3 @@ form button:hover{
 }
 /* TaskTracker */
 
-.Task-Tracker-container{
-    background-color: black;
-    height: 70vh;
-    margin: 20px;
-    border-radius: 5px;
-}
