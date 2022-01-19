@@ -19,7 +19,7 @@ export default function TaskTracker(props) {
   }
   
   
-  const blocks = hourblocks.map((blk) =>{
+  const blocks = hourblocks.map((blk, index) =>{
     const blocktime = 24 - val1;
     const blocktime2 = 60 - val2;
     const blockpercent = (blocktime2 / 60) * 100;
@@ -27,11 +27,11 @@ export default function TaskTracker(props) {
 
     return(
       blocktime === blk ? 
-      <div className={'blocks pulse'}>
+      <div key={index} className={'blocks pulse'}>
         <p className="block-act" style={{background : `linear-gradient(to top, white ${blockpercent}%, transparent 0%)`}}>{blk}</p>
       </div>
       :
-      <div className={blocktime < blk ? "blocks" : "blocks-full"}>{blk}</div>
+      <div key={index} className={blocktime < blk ? "blocks" : "blocks-full"}>{blk}</div>
     ) 
   })
 

@@ -7,7 +7,7 @@ import lock from '../src/assets/icons/lock-fill.svg';
 
 function App() {
   const [theme, setTheme] = useContext(ThemeContext);
-  const [tab, setTab] = useContext(TabContext);
+  const [tab, setTab] = useState(0);
   const [isLoaded, setIsLoaded] = useState(null);
   const [isActive, setIsActive] = useState(false);
   const [isclosed, setClosed] = useState(true);
@@ -30,7 +30,7 @@ function App() {
 
   const route = ["Ocean", "Metal", "Garden", "Space"];
   const routes = route.map((r, index) => {
-    return <div className='routeStyle' style={{transition: 'opacity .8s ease-in, transform .8s ease-in'}}><img className='lock' src={lock}/>{r}</div>;
+    return <div key={index} className='routeStyle' style={{transition: 'opacity .8s ease-in, transform .8s ease-in'}}><img className='lock' src={lock}/>{r}</div>;
   });
   const sideroute = [
     "Overview",

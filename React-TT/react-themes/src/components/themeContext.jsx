@@ -13,26 +13,26 @@ export const ThemeProvider = (props) => {
     )
 }
 
-export const TabProvider = (props) => {
-    const [tab, setTab] = useState(0);
-
-    useEffect(()=>{
-        const TabData = window.localStorage.getItem('Page-Information');        
+// export const TabProvider = (props) => {
+//     const [tab, setTab] = useState(0);
+    
+//     useEffect(()=>{
+//         const TabData = window.localStorage.getItem('Page-Information');        
        
-        if(TabData){
-           setTab(JSON.parse(TabData));
-        }
+//         if(TabData){
+//            setTab(JSON.parse(TabData));
+//         }
        
-      },[])
-      useEffect(()=>{
-        window.localStorage.setItem('Page-Information', JSON.stringify(tab));
-        console.log('tab is now: ' + tab);
+//       },[])
+//       useEffect(()=>{
+//         window.localStorage.setItem('Page-Information', JSON.stringify(tab));
+//         console.log('tab is now: ' + tab);
         
-    },[tab])
+//     },[tab])
    
-    return( 
-        <TabContext.Provider value={[tab,setTab]}>
-            {props.children}
-        </TabContext.Provider>
-    )
-}
+//     return( 
+//         <TabContext.Provider value={[tab,setTab]}>
+//             {props.children}
+//         </TabContext.Provider>
+//     )
+// }

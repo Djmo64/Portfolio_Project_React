@@ -8,9 +8,9 @@ import { TabProvider, ThemeProvider } from './components/themeContext';
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider>
-      <TabProvider>
+      {/* <TabProvider> */}
     <App />
-    </TabProvider>
+    {/* </TabProvider> */}
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')

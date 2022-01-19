@@ -37,13 +37,18 @@ export function DayTimer(props){
              setTimerHours(hours);
              setTimerMins(minutes);
              setTimerSecs(seconds);
+             props.getValues(timerhours, timermins)
          }
         });
      }
  
      useEffect(() => {
+         
          startTimer();
-         props.getValues(timerhours, timermins)
+         return () => {
+            clearInterval(interval)
+         }
+         
      })
      
 
