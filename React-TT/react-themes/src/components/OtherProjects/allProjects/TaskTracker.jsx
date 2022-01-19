@@ -10,6 +10,7 @@ export default function TaskTracker(props) {
   const [task, setTask] = useState('');
   const [val1, setVal1] = useState();
   const [val2, setVal2] = useState();
+  const hourblocks = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]
   
   
   function setValues(v1, v2){
@@ -17,20 +18,36 @@ export default function TaskTracker(props) {
     setVal2(v2);
   }
   
+  
+  const blocks = hourblocks.map((blk) =>{
+    const blocktime = 24 - val1;
+    const blocktime2 = 60 - val2;
+    const blockpercent = (blocktime2 / 60) * 100;
+    
+
+    return(
+      blocktime === blk ? 
+      <div className={'blocks pulse'}>
+        <p className="block-act" style={{background : `linear-gradient(to top, white ${blockpercent}%, transparent 0%)`}}>{blk}</p>
+      </div>
+      :
+      <div className={blocktime < blk ? "blocks" : "blocks-full"}>{blk}</div>
+    ) 
+  })
 
   return (
     <div className="Task-Tracker-container load">
 
       <div className="todo-list-container">
         <form>
-          <input type="text" class="todo-input" value={task} onChange={(e)=>setTask(e.target.value)}/>
-          <button class="todo-btn" onClick={addTodo}>
-            <i class="fas fa-plus-square"></i>
+          <input type="text" className="todo-input" value={task} onChange={(e)=>setTask(e.target.value)}/>
+          <button className="todo-btn" onClick={addTodo}>
+            <i className="fas fa-plus-square"></i>
           </button>
         </form>
 
-        <div class="todo-container">
-          <ul class="todo-list" onClick={listAction}>
+        <div className="todo-container">
+          <ul className="todo-list" onClick={listAction}>
             {todoList.length > 0 ? todoList : <li style={{color: 'gray', textAlign: 'center'}}>Add Daily Tasks!</li>}
             </ul>
         </div>
@@ -40,7 +57,7 @@ export default function TaskTracker(props) {
         <div className="meter-grid">
               Daily Grid
               <div className="grid-blocks">
-
+                {blocks}
               </div>
         </div>
         <DayTimer getValues={(hours, mins) => setValues(hours, mins)}/>
