@@ -8,6 +8,8 @@ export default function TaskTracker(props) {
 
   const [todoList,setTodoList] = useState([]);
   const [task, setTask] = useState('');
+  const [taskItem, setTaskItem] = useState('');
+  const [taskList, setTaskList] = useState([]);
   const [val1, setVal1] = useState();
   const [val2, setVal2] = useState();
   const hourblocks = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]
@@ -40,7 +42,7 @@ export default function TaskTracker(props) {
 
       <div className="todo-list-container">
         <form>
-          <input type="text" className="todo-input" value={task} onChange={(e)=>setTask(e.target.value)}/>
+          <input type="text" className="todo-input" value={taskItem} onChange={(e)=>addValues(e.target.value)}/>
           <button className="todo-btn" onClick={addTodo}>
             <i className="fas fa-plus-square"></i>
           </button>
@@ -62,7 +64,9 @@ export default function TaskTracker(props) {
         </div>
         <DayTimer getValues={(hours, mins) => setValues(hours, mins)}/>
       </div>
-      
+      <div className="task-list-container">
+        <p style={{color: 'gray', flexDirection : 'column'}}>{taskList}</p>
+      </div>
         
     </div>
    
@@ -75,31 +79,36 @@ export default function TaskTracker(props) {
 function addTodo(e){
     e.preventDefault()
 
+    
     const todo = (
       <div className="todo">
         <li className="todo-item">
-            {task}
+            {taskItem}
         </li>
-        <button className="check-btn">
+        <button onClick={()=>addToList(task) } className="check-btn">
           <i className="fas fa-check"></i>
         </button>
-        <button className="remove-btn">
+        <button onClick={()=>removeFromList(taskItem)} className="remove-btn">
           <i className="fas fa-trash"></i>
         </button>
       </div>
     )
     setTodoList([...todoList,todo]);
-    setTask('')
+    setTaskItem('');
+    
 }
 
 function listAction(e){
     const className = e.target;
+
 
     if(className.classList[0] === 'remove-btn'){
         const parent = className.parentElement;
         parent.classList.add('vanish');
         parent.addEventListener('transitionend', ()=>{
         parent.remove();
+          
+        
         });
         
     }
@@ -108,5 +117,22 @@ function listAction(e){
         parent.classList.toggle("completed");
     } 
 
+}
+function addValues(val){
+  setTask(val);
+  setTaskItem(val);
+}
+
+function addToList(Item){
+    setTaskList(() => [...taskList,Item])
+
+  console.log(taskList)
+}
+function removeFromList(Item){
+    const array = [...taskList];
+    const index = array.indexOf(Item)
+    
+    array.splice(index, 1);
+          setTaskList([array]);
 }
 }

@@ -72,3 +72,8 @@
         transform: scale(1);
     }
 }
+.task-list-container{
+    display: flex;
+    flex-direction: column;
+    color: gray;
+}
