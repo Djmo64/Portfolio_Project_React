@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../allProjects/AllProjects.css";
 import "../allProjects/TaskTracker.css";
 import {DayTimer} from "./SimpleTimer";
@@ -19,24 +19,38 @@ export default function TaskTracker(props) {
     setVal1(v1);
     setVal2(v2);
   }
-  
+
+  const addToList = (Item) => {
+    setTaskList([...taskList,{Task : Item, Index: 0}])
+   
+
+
+}
+  useEffect(()=>{
+    console.log(taskList)
+  }, [taskList])
   
   const blocks = hourblocks.map((blk, index) =>{
     const blocktime = 24 - val1;
     const blocktime2 = 60 - val2;
     const blockpercent = (blocktime2 / 60) * 100;
     
-
+    
     return(
       blocktime === blk ? 
       <div key={index} className={'blocks pulse'}>
-        <p className="block-act" style={{background : `linear-gradient(to top, white ${blockpercent}%, transparent 0%)`}}>{blk}</p>
+        <p className="block-act" style={{background : `linear-gradient(to top, white ${blockpercent}%, transparent 0%)`}}>
+          {blk}
+        </p>
       </div>
       :
-      <div key={index} className={blocktime < blk ? "blocks" : "blocks-full"}>{blk}</div>
+      <div key={index} className={blocktime < blk ? "blocks" : "blocks-full"}>
+        {blk}
+      </div>
     ) 
   })
 
+  
   return (
     <div className="Task-Tracker-container load">
 
@@ -65,7 +79,7 @@ export default function TaskTracker(props) {
         <DayTimer getValues={(hours, mins) => setValues(hours, mins)}/>
       </div>
       <div className="task-list-container">
-        <p style={{color: 'gray', flexDirection : 'column'}}>{taskList}</p>
+        <p style={{color: 'gray', flexDirection : 'column'}}>{taskList.Task}</p>
       </div>
         
     </div>
@@ -78,17 +92,18 @@ export default function TaskTracker(props) {
 
 function addTodo(e){
     e.preventDefault()
-
     
+    addToList(task)
     const todo = (
       <div className="todo">
         <li className="todo-item">
             {taskItem}
         </li>
-        <button onClick={()=>addToList(task) } className="check-btn">
+        <button onClick={0} className="check-btn">
           <i className="fas fa-check"></i>
         </button>
-        <button onClick={()=>removeFromList(taskItem)} className="remove-btn">
+        <button onClick={()=>removeFromList(taskList.Task)} className="remove-btn"> 
+        {/* needs index probs */}
           <i className="fas fa-trash"></i>
         </button>
       </div>
@@ -100,7 +115,7 @@ function addTodo(e){
 
 function listAction(e){
     const className = e.target;
-
+    
 
     if(className.classList[0] === 'remove-btn'){
         const parent = className.parentElement;
@@ -123,16 +138,9 @@ function addValues(val){
   setTaskItem(val);
 }
 
-function addToList(Item){
-    setTaskList(() => [...taskList,Item])
 
-  console.log(taskList)
-}
+
 function removeFromList(Item){
-    const array = [...taskList];
-    const index = array.indexOf(Item)
-    
-    array.splice(index, 1);
-          setTaskList([array]);
+  setTaskList(taskList.filter(tskl => tskl.Task !== Item).map(tskl => tskl))
 }
 }
