@@ -23,9 +23,22 @@ export default function TaskTracker(props) {
   const addToList = (Item) => {
     setTaskList([...taskList,{Task : Item, Index: 0}])
    
-
-
 }
+// replace todo with list
+  const List = taskList.map((tsk,indx) =>{
+    
+    <div className="todo">
+        <li className="todo-item">
+            {tsk.Task}
+        </li>
+        <button onClick={0} className="check-btn">
+          <i className="fas fa-check"></i>
+        </button>
+        <button onClick={()=>removeFromList(tsk.Task)} className="remove-btn"> 
+          <i className="fas fa-trash"></i>
+        </button>
+      </div>
+  })
   useEffect(()=>{
     console.log(taskList)
   }, [taskList])
@@ -34,6 +47,11 @@ export default function TaskTracker(props) {
     const blocktime = 24 - val1;
     const blocktime2 = 60 - val2;
     const blockpercent = (blocktime2 / 60) * 100;
+
+    const blockinfo = {
+      Task : [],
+      Index: index
+    }
     
     
     return(
@@ -93,6 +111,7 @@ export default function TaskTracker(props) {
 function addTodo(e){
     e.preventDefault()
     
+    
     addToList(task)
     const todo = (
       <div className="todo">
@@ -102,7 +121,7 @@ function addTodo(e){
         <button onClick={0} className="check-btn">
           <i className="fas fa-check"></i>
         </button>
-        <button onClick={()=>removeFromList(taskList.Task)} className="remove-btn"> 
+        <button onClick={()=>removeFromList(task)} className="remove-btn"> 
         {/* needs index probs */}
           <i className="fas fa-trash"></i>
         </button>
@@ -141,6 +160,9 @@ function addValues(val){
 
 
 function removeFromList(Item){
-  setTaskList(taskList.filter(tskl => tskl.Task !== Item).map(tskl => tskl))
+  const Index = taskList.findIndex(tl => tl.Task === Item)
+  
+  setTaskList(taskList.filter(tskl => tskl.Task !== `${Item}`))
+  console.log(Item,Index, taskList.filter(tskl => tskl.Task !== Item))
 }
 }
