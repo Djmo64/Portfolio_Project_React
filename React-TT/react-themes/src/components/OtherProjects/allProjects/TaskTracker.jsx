@@ -21,23 +21,24 @@ export default function TaskTracker(props) {
   }
 
   const addToList = (Item) => {
-    setTaskList([...taskList,{Task : Item, Index: 0}])
+    setTaskList([...taskList,{Task : Item, Index: ''}])
    
 }
 // replace todo with list
-  const List = taskList.map((tsk,indx) =>{
-    
-    <div className="todo">
+  const List = taskList.map((tsk,indx) => {
+    tsk.Index = indx
+    return(
+    <div id={`${tsk.Task}${tsk.Index}`} className="todo">
         <li className="todo-item">
             {tsk.Task}
         </li>
         <button onClick={0} className="check-btn">
           <i className="fas fa-check"></i>
         </button>
-        <button onClick={()=>removeFromList(tsk.Task)} className="remove-btn"> 
+        <button onClick={()=>removeFromList(tsk.Task, tsk.Index)} className="remove-btn"> 
           <i className="fas fa-trash"></i>
         </button>
-      </div>
+      </div>)
   })
   useEffect(()=>{
     console.log(taskList)
@@ -82,7 +83,7 @@ export default function TaskTracker(props) {
 
         <div className="todo-container">
           <ul className="todo-list" onClick={listAction}>
-            {todoList.length > 0 ? todoList : <li style={{color: 'gray', textAlign: 'center'}}>Add Daily Tasks!</li>}
+            {List.length > 0 ? List : <li style={{color: 'gray', textAlign: 'center'}}>Add Daily Tasks!</li>}
             </ul>
         </div>
            
@@ -110,24 +111,7 @@ export default function TaskTracker(props) {
 
 function addTodo(e){
     e.preventDefault()
-    
-    
     addToList(task)
-    const todo = (
-      <div className="todo">
-        <li className="todo-item">
-            {taskItem}
-        </li>
-        <button onClick={0} className="check-btn">
-          <i className="fas fa-check"></i>
-        </button>
-        <button onClick={()=>removeFromList(task)} className="remove-btn"> 
-        {/* needs index probs */}
-          <i className="fas fa-trash"></i>
-        </button>
-      </div>
-    )
-    setTodoList([...todoList,todo]);
     setTaskItem('');
     
 }
@@ -136,16 +120,16 @@ function listAction(e){
     const className = e.target;
     
 
-    if(className.classList[0] === 'remove-btn'){
-        const parent = className.parentElement;
-        parent.classList.add('vanish');
-        parent.addEventListener('transitionend', ()=>{
-        parent.remove();
+    // if(className.classList[0] === 'remove-btn'){
+    //     const parent = className.parentElement;
+    //     parent.classList.add('vanish');
+    //     parent.addEventListener('transitionend', ()=>{
+    //     parent.remove();
           
         
-        });
+    //     });
         
-    }
+    // }
     if(className.classList[0] === 'check-btn'){
         const parent = className.parentElement;
         parent.classList.toggle("completed");
@@ -159,10 +143,10 @@ function addValues(val){
 
 
 
-function removeFromList(Item){
+function removeFromList(Item, idx){
   const Index = taskList.findIndex(tl => tl.Task === Item)
-  
-  setTaskList(taskList.filter(tskl => tskl.Task !== `${Item}`))
-  console.log(Item,Index, taskList.filter(tskl => tskl.Task !== Item))
+  setTaskList(taskList.filter(tskl => { return tskl.Index !== Index && tskl.Task !== Item}))
+  console.log(Item,Index, taskList.filter(tskl => { return tskl.Index !== idx && tskl.Task !== Item}), taskList)
+ 
 }
 }
