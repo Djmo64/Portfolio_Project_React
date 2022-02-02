@@ -6,10 +6,10 @@ import {DayTimer} from "./SimpleTimer";
 export default function TaskTracker(props) {
 
 
-  const [todoList,setTodoList] = useState([]);
   const [task, setTask] = useState('');
   const [taskItem, setTaskItem] = useState('');
   const [taskList, setTaskList] = useState([]);
+  const [addBlockInfo, setaddBlockInfo] = useState([])
   const [val1, setVal1] = useState();
   const [val2, setVal2] = useState();
   const hourblocks = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]
@@ -32,7 +32,7 @@ export default function TaskTracker(props) {
         <li className="todo-item">
             {tsk.Task}
         </li>
-        <button onClick={0} className="check-btn">
+        <button onClick={()=> taskToCurrentBlk(tsk.Task)} className="check-btn">
           <i className="fas fa-check"></i>
         </button>
         <button onClick={()=>removeFromList(tsk.Task, tsk.Index)} className="remove-btn"> 
@@ -50,15 +50,14 @@ export default function TaskTracker(props) {
     const blockpercent = (blocktime2 / 60) * 100;
 
     const blockinfo = {
-      Task : [],
-      Index: index
+      Task : []
     }
     
     
     return(
       blocktime === blk ? 
-      <div key={index} className={'blocks pulse'}>
-        <p className="block-act" style={{background : `linear-gradient(to top, white ${blockpercent}%, transparent 0%)`}}>
+      <div  key={index}id={`blocktive`} className={'blocks pulse'}>
+        <p  className="block-act" style={{background : `linear-gradient(to top, white ${blockpercent}%, transparent 0%)`}}>
           {blk}
         </p>
       </div>
@@ -141,12 +140,21 @@ function addValues(val){
   setTaskItem(val);
 }
 
+function taskToCurrentBlk(task, blk){
+  const blocktime = 24 - val1;
+  const blocktime2 = 60 - val2;
+  const blockpercent = (blocktime2 / 60) * 100;
 
+  setaddBlockInfo([...addBlockInfo, {Task: task, Block: blk}])
+  
+  const block = document.getElementById(`blocktive`)
+  block.style.background = `gold`
+}
 
 function removeFromList(Item, idx){
   const Index = taskList.findIndex(tl => tl.Task === Item)
   setTaskList(taskList.filter(tskl => { return tskl.Index !== Index && tskl.Task !== Item}))
-  console.log(Item,Index, taskList.filter(tskl => { return tskl.Index !== idx && tskl.Task !== Item}), taskList)
+  // console.log(Item,Index, taskList.filter(tskl => { return tskl.Index !== idx && tskl.Task !== Item}), taskList)
  
 }
 }
