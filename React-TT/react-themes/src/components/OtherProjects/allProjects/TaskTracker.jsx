@@ -9,12 +9,30 @@ export default function TaskTracker(props) {
   const [task, setTask] = useState('');
   const [taskItem, setTaskItem] = useState('');
   const [taskList, setTaskList] = useState([]);
-  const [addBlockInfo, setaddBlockInfo] = useState([{Task: '', Block: ''}])
+  const [currentBlockInfo, setcurrentBlockInfo] = useState([{Task: '', Block: ''}])
   const [val1, setVal1] = useState();
   const [val2, setVal2] = useState();
   const hourblocks = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]
+  const [blockTasks, setblockTasks] = useState([])
+
+  useEffect(()=>{
+    if(blockTasks.length === 0){
+      setblockTasks(array())
+      console.log('added!')
+    }
+    console.log(blockTasks)
+  }, [taskList, currentBlockInfo])
+
+
+  const array = () =>{
+     const arr = []
+    for(let x = 0; x < 25; x++){
+    arr.push({Task: [], Index: x+1})
+  } 
+  return arr
+}
   
-  
+
   function setValues(v1, v2){
     setVal1(v1);
     setVal2(v2);
@@ -40,10 +58,7 @@ export default function TaskTracker(props) {
         </button>
       </div>)
   })
-  useEffect(()=>{
-    // console.log(taskList)
-    console.log(addBlockInfo)
-  }, [taskList, addBlockInfo])
+ 
   
   const blocks = hourblocks.map((blk, index) =>{
     const blocktime = 24 - val1;
@@ -57,7 +72,7 @@ export default function TaskTracker(props) {
       <div  key={index}id={`blocktive`} className={'blocks pulse'}>
         <p  className="block-act" style={{background : `linear-gradient(to top, white ${blockpercent}%, transparent 0%)`}}>
           {blk}
-          {addBlockInfo[0].Task !== '' ?<p>{addBlockInfo[0].Task}</p>: null}
+          {/* {currentBlockInfo[0].Task !== '' ?<p>{currentBlockInfo[0].Task}</p>: null} */}
           
         </p>
       </div>
@@ -142,7 +157,7 @@ function addValues(val){
 
 function taskToCurrentBlk(task, blk){
   
-  addBlockInfo[0].Task === '' && addBlockInfo[0].Block === '' ? setaddBlockInfo([{Task: task, Block: blk}]) : setaddBlockInfo([...addBlockInfo, {Task: task, Block: blk}])
+  currentBlockInfo[0].Task === '' && currentBlockInfo[0].Block === '' ? setcurrentBlockInfo([{Task: task, Block: blk}]) : setcurrentBlockInfo([...currentBlockInfo, {Task: task, Block: blk}])
   
   const block = document.getElementById(`blocktive`)
   block.style.background = `gold`
