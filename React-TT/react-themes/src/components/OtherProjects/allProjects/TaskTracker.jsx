@@ -9,7 +9,7 @@ export default function TaskTracker(props) {
   const [task, setTask] = useState('');
   const [taskItem, setTaskItem] = useState('');
   const [taskList, setTaskList] = useState([]);
-  const [addBlockInfo, setaddBlockInfo] = useState([])
+  const [addBlockInfo, setaddBlockInfo] = useState([{Task: '', Block: ''}])
   const [val1, setVal1] = useState();
   const [val2, setVal2] = useState();
   const hourblocks = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]
@@ -32,7 +32,7 @@ export default function TaskTracker(props) {
         <li className="todo-item">
             {tsk.Task}
         </li>
-        <button onClick={()=> taskToCurrentBlk(tsk.Task)} className="check-btn">
+        <button onClick={()=> taskToCurrentBlk(tsk.Task, tsk.Index)} className="check-btn">
           <i className="fas fa-check"></i>
         </button>
         <button onClick={()=>removeFromList(tsk.Task, tsk.Index)} className="remove-btn"> 
@@ -41,17 +41,15 @@ export default function TaskTracker(props) {
       </div>)
   })
   useEffect(()=>{
-    console.log(taskList)
-  }, [taskList])
+    // console.log(taskList)
+    console.log(addBlockInfo)
+  }, [taskList, addBlockInfo])
   
   const blocks = hourblocks.map((blk, index) =>{
     const blocktime = 24 - val1;
     const blocktime2 = 60 - val2;
     const blockpercent = (blocktime2 / 60) * 100;
 
-    const blockinfo = {
-      Task : []
-    }
     
     
     return(
@@ -59,6 +57,8 @@ export default function TaskTracker(props) {
       <div  key={index}id={`blocktive`} className={'blocks pulse'}>
         <p  className="block-act" style={{background : `linear-gradient(to top, white ${blockpercent}%, transparent 0%)`}}>
           {blk}
+          {addBlockInfo[0].Task !== '' ?<p>{addBlockInfo[0].Task}</p>: null}
+          
         </p>
       </div>
       :
@@ -131,7 +131,7 @@ function listAction(e){
     // }
     if(className.classList[0] === 'check-btn'){
         const parent = className.parentElement;
-        parent.classList.toggle("completed");
+        parent.classList.add("completed");
     } 
 
 }
@@ -141,14 +141,16 @@ function addValues(val){
 }
 
 function taskToCurrentBlk(task, blk){
-  const blocktime = 24 - val1;
-  const blocktime2 = 60 - val2;
-  const blockpercent = (blocktime2 / 60) * 100;
-
-  setaddBlockInfo([...addBlockInfo, {Task: task, Block: blk}])
+  
+  addBlockInfo[0].Task === '' && addBlockInfo[0].Block === '' ? setaddBlockInfo([{Task: task, Block: blk}]) : setaddBlockInfo([...addBlockInfo, {Task: task, Block: blk}])
   
   const block = document.getElementById(`blocktive`)
   block.style.background = `gold`
+  
+  
+}
+function tasktoclickedblock(task, blk){
+
 }
 
 function removeFromList(Item, idx){
