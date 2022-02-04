@@ -9,7 +9,6 @@ export default function TaskTracker(props) {
   const [task, setTask] = useState('');
   const [taskItem, setTaskItem] = useState('');
   const [taskList, setTaskList] = useState([]);
-  const [currentBlockInfo, setcurrentBlockInfo] = useState([{Task: '', Block: ''}])
   const [val1, setVal1] = useState();
   const [val2, setVal2] = useState();
   const hourblocks = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]
@@ -21,13 +20,13 @@ export default function TaskTracker(props) {
       console.log('added!')
     }
     console.log(blockTasks)
-  }, [taskList, currentBlockInfo])
+  }, [taskList])
 
 
   const array = () =>{
      const arr = []
     for(let x = 0; x < 25; x++){
-    arr.push({Task: [], Index: x+1})
+    arr.push({Task: [], Index: x})
   } 
   return arr
 }
@@ -44,13 +43,14 @@ export default function TaskTracker(props) {
 }
 // replace todo with list
   const List = taskList.map((tsk,indx) => {
+    const blocktime = 24 - val1;
     tsk.Index = indx
     return(
     <div id={`${tsk.Task}${tsk.Index}`} className="todo">
         <li className="todo-item">
             {tsk.Task}
         </li>
-        <button onClick={()=> taskToCurrentBlk(tsk.Task, tsk.Index)} className="check-btn">
+        <button onClick={()=> taskToCurrentBlk(tsk.Task, blocktime)} className="check-btn">
           <i className="fas fa-check"></i>
         </button>
         <button onClick={()=>removeFromList(tsk.Task, tsk.Index)} className="remove-btn"> 
@@ -68,17 +68,20 @@ export default function TaskTracker(props) {
     
     
     return(
-      blocktime === blk ? 
+      blocktime === blk  ? 
       <div  key={index}id={`blocktive`} className={'blocks pulse'}>
         <p  className="block-act" style={{background : `linear-gradient(to top, white ${blockpercent}%, transparent 0%)`}}>
           {blk}
-          {/* {currentBlockInfo[0].Task !== '' ?<p>{currentBlockInfo[0].Task}</p>: null} */}
+            {blockTasks[blk].Task.length > 0 ? 'yes' : null}
           
         </p>
       </div>
       :
       <div key={index} className={blocktime < blk ? "blocks" : "blocks-full"}>
         {blk}
+        {blockTasks.length > 0 ?
+          blockTasks[blk].Task.length > 0 ? 1 : null
+        : null}
       </div>
     ) 
   })
@@ -157,8 +160,7 @@ function addValues(val){
 
 function taskToCurrentBlk(task, blk){
   
-  currentBlockInfo[0].Task === '' && currentBlockInfo[0].Block === '' ? setcurrentBlockInfo([{Task: task, Block: blk}]) : setcurrentBlockInfo([...currentBlockInfo, {Task: task, Block: blk}])
-  
+  blockTasks[blk].Task = [...blockTasks[blk].Task, task]
   const block = document.getElementById(`blocktive`)
   block.style.background = `gold`
   
