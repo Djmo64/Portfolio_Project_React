@@ -13,13 +13,15 @@ export default function TaskTracker(props) {
   const [val2, setVal2] = useState();
   const hourblocks = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]
   const [blockTasks, setblockTasks] = useState([])
+  const blocktime = 24 - val1;
+  const [blockInfo, setBlockInfo] = useState([{Task: [],Display : '' }])
 
   useEffect(()=>{
     if(blockTasks.length === 0){
       setblockTasks(array())
       console.log('added!')
     }
-    console.log(blockTasks)
+    console.log(blockInfo)
   }, [taskList])
 
 
@@ -43,7 +45,7 @@ export default function TaskTracker(props) {
 }
 // replace todo with list
   const List = taskList.map((tsk,indx) => {
-    const blocktime = 24 - val1;
+    // const blocktime = 24 - val1;
     tsk.Index = indx
     return(
     <div id={`${tsk.Task}${tsk.Index}`} className="todo">
@@ -61,7 +63,7 @@ export default function TaskTracker(props) {
  
   
   const blocks = hourblocks.map((blk, index) =>{
-    const blocktime = 24 - val1;
+    // const blocktime = 24 - val1;
     const blocktime2 = 60 - val2;
     const blockpercent = (blocktime2 / 60) * 100;
 
@@ -117,7 +119,10 @@ export default function TaskTracker(props) {
       <div className="task-list-container">
         <p style={{color: 'gray', flexDirection : 'column'}}>{taskList.Task}</p>
       </div>
-        
+        {blockTasks.length > 0 ?
+         <p style={{color: 'gray'}}>{blockInfo[0].Task}</p>
+        : null
+        }
     </div>
    
   );
@@ -161,13 +166,15 @@ function addValues(val){
 function taskToCurrentBlk(task, blk){
   
   blockTasks[blk].Task = [...blockTasks[blk].Task, task]
+  setBlockInfo([{Task: blockTasks[blk].Task, Display: blk}])
+  
   const block = document.getElementById(`blocktive`)
   block.style.background = `gold`
   
   
 }
 function tasktoclickedblock(task, blk){
-
+  blockTasks[blk].Task = [...blockTasks[blk].Task, task]
 }
 
 function removeFromList(Item, idx){
