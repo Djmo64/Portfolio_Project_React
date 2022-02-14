@@ -71,7 +71,7 @@ export default function TaskTracker(props) {
     
     return(
       blocktime === blk  ? 
-      <div  key={index}id={`blocktive`} className={'blocks pulse'}>
+      <div onClick={()=> showTasks(blk)}  key={index}id={`blocktive`} className={'blocks pulse'}>
         <p  className="block-act" style={{background : `linear-gradient(to top, white ${blockpercent}%, transparent 0%)`}}>
           {blk}
             {blockTasks[blk].Task.length > 0 ? 'yes' : null}
@@ -79,7 +79,7 @@ export default function TaskTracker(props) {
         </p>
       </div>
       :
-      <div key={index} className={blocktime < blk ? "blocks" : "blocks-full"}>
+      <div onClick={()=> showTasks(blk)} key={index} className={blocktime < blk ? "blocks" : "blocks-full"}>
         {blk}
         {blockTasks.length > 0 ?
           blockTasks[blk].Task.length > 0 ? 1 : null
@@ -116,11 +116,22 @@ export default function TaskTracker(props) {
         </div>
         <DayTimer getValues={(hours, mins) => setValues(hours, mins)}/>
       </div>
-      <div className="task-list-container">
-        <p style={{color: 'gray', flexDirection : 'column'}}>{taskList.Task}</p>
-      </div>
+      
         {blockTasks.length > 0 ?
-         <p style={{color: 'gray'}}>{blockInfo[0].Task}</p>
+        <div className="blockTasks-container">
+          <div className="block-tasks-and-actions">
+          <div className="finished-tasks-header">Finished Tasks for hour {blockInfo[0].Display}:</div>
+          <ul>
+          {blockInfo[0].Task.map((tsk) => {
+            return <li style={{color: 'gray', textAlign: 'start'}}>{tsk}</li>
+          })}
+         </ul>
+         </div>
+         <div className="task-action-buttons">
+           <button>Add Completed Task</button>
+           <button>Remove Task</button>
+         </div>
+         </div>
         : null
         }
     </div>
@@ -170,11 +181,14 @@ function taskToCurrentBlk(task, blk){
   
   const block = document.getElementById(`blocktive`)
   block.style.background = `gold`
-  
-  
+}
+
+function showTasks(blk){
+  setBlockInfo([{Task: blockTasks[blk].Task, Display: blk}])
 }
 function tasktoclickedblock(task, blk){
   blockTasks[blk].Task = [...blockTasks[blk].Task, task]
+  //needs modal
 }
 
 function removeFromList(Item, idx){

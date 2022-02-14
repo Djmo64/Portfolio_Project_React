@@ -4,6 +4,7 @@
     margin: 20px;
     border-radius: 5px;
     display: flex;
+    justify-content: space-around;
 }
 .meter-grid{
     border: 2px solid gray;
@@ -16,7 +17,7 @@
     border-radius: 5px;
 }
 .task-meter-container{
-    flex-grow: 1;
+    /* flex-grow: 1; */
 }
 .grid-blocks{
     height: 90%;
@@ -76,4 +77,18 @@
     display: flex;
     flex-direction: column;
     color: gray;
+}
+.blockTasks-container{
+    width: 25vw;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.finished-tasks-header{
+    color: gray;
+    margin-top: 10px;
+}
+.task-action-buttons{
+    margin-bottom: 5vh;
 }
