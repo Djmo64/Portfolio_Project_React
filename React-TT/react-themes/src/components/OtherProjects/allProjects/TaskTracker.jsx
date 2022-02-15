@@ -194,7 +194,6 @@ function tasktoclickedblock(task, blk){
 function removeFromList(Item, idx){
   const Index = taskList.findIndex(tl => tl.Task === Item)
   setTaskList(taskList.filter(tskl => { return tskl.Index !== Index && tskl.Task !== Item}))
-  // console.log(Item,Index, taskList.filter(tskl => { return tskl.Index !== idx && tskl.Task !== Item}), taskList)
  
 }
 }
