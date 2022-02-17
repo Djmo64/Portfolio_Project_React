@@ -92,3 +92,12 @@
 .task-action-buttons{
     margin-bottom: 5vh;
 }
+.modal-background{
+    background: white;
+    opacity: 0.6;
+    width: 100vw;
+    height: 111.5vh;
+    transform: translateY(-23.5vh);
+    position: absolute;
+    z-index: 2;
+}
