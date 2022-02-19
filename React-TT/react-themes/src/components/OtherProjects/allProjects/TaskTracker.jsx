@@ -60,29 +60,74 @@ const modalTasks = taskList.map((tsk, idx) =>{
 
   function TaskModal(props){
     
-    return(
-     props.option === 'add' ? 
-      <div className="modal-background">
-        <div className="modal-container">
-          <p onClick={()=> setisOpen(!isOpen)} className="modal-close">
-            X
-          </p>
-          <h2>Select Task(s) to add to Time Block:</h2>
-          <div className="modal-tasks">
-            <ul>{modalTasks}</ul>
-            <button>Add</button>
+    switch(props.option){
+      case 'add':
+        return(
+          <div className="modal-background">
+               <div className="modal-container">
+                 <p onClick={()=> setisOpen(!isOpen)} className="modal-close">
+                   X
+                 </p>
+                 <h2>Select Task(s) to add to Time Block:</h2>
+                 <div className="modal-tasks">
+                   <ul>{modalTasks}</ul>
+                   <button>Add</button>
+                 </div>
+               </div>
+             </div>
+        )
+      case 'remove':
+        return(
+          <div className="modal-background">
+         <div className="modal-container">
+           <p className="modal-close">
+             X
+           </p>
+         </div>
+       </div>
+        )
+        case 'confirm':
+          return(
+            <div className="modal-background">
+            <div className="modal-container">
+              <p onClick={()=> setisOpen(!isOpen)} className="modal-close">
+                X
+              </p>
+              <h2>You Sure?</h2>
+              <div className="modal-tasks">
+                <button>Yes</button>
+                <button>No</button>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-      :
-      <div className="modal-background">
-        <div className="modal-container">
-          <p className="modal-close">
-            X
-          </p>
-        </div>
-      </div>
-    )
+          )
+        default : console.log('none')
+    }
+    
+    // return(
+      
+    //  props.option === 'add' ? 
+    //   <div className="modal-background">
+    //     <div className="modal-container">
+    //       <p onClick={()=> setisOpen(!isOpen)} className="modal-close">
+    //         X
+    //       </p>
+    //       <h2>Select Task(s) to add to Time Block:</h2>
+    //       <div className="modal-tasks">
+    //         <ul>{modalTasks}</ul>
+    //         <button>Add</button>
+    //       </div>
+    //     </div>
+    //   </div>
+    //   :
+    //   <div className="modal-background">
+    //     <div className="modal-container">
+    //       <p className="modal-close">
+    //         X
+    //       </p>
+    //     </div>
+    //   </div>
+    // )
   }
 
   function setValues(v1, v2){
