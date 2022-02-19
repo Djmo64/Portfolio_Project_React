@@ -93,11 +93,36 @@
     margin-bottom: 5vh;
 }
 .modal-background{
-    background: white;
-    opacity: 0.6;
+    background: rgba(255, 255, 255, 60%);
+    /* opacity: 0.6; */
     width: 100vw;
     height: 111.5vh;
     transform: translateY(-23.5vh);
     position: absolute;
     z-index: 2;
+    display: flex;
+    justify-content: center;
+}
+.modal-container{
+    width: 50vw;
+    height: 50vh;
+    margin-top: 25vh;
+    background: white;
+    border: 2px solid;
+    border-radius: 5px;
+}
+.modal-container h2{
+    text-align: center;
+}
+.modal-close{
+    width: 20px;
+    margin: 0;
+    padding: 5px;
+    text-align: center;
+    background: gray;
+    margin-left: 5px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 2px solid;
+    position: absolute;
 }

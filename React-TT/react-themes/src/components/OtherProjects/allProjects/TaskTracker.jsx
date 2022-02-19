@@ -15,15 +15,16 @@ export default function TaskTracker(props) {
   const [blockTasks, setblockTasks] = useState([])
   const blocktime = 24 - val1;
   const [blockInfo, setBlockInfo] = useState([{Task: [],Display : '' }])
-  const [isOpen, setisOpen] = useState(true)
+  const [isOpen, setisOpen] = useState(false)
+  const [modalTaskArr, setmodalTaskArr] = useState([])
 
   useEffect(()=>{
     if(blockTasks.length === 0){
       setblockTasks(array())
       console.log('added!')
     }
-    console.log(blockInfo)
-  }, [taskList])
+    console.log(modalTaskArr)
+  }, [taskList,modalTaskArr])
 
 
   const array = () =>{
@@ -33,10 +34,47 @@ export default function TaskTracker(props) {
   } 
   return arr
 }
-  function taskModal(option){
+
+function addmodalTaskActions(tsk){
+  if(modalTaskArr.length > 0){
+  modalTaskArr.map((t)=>{
+    if(t === tsk){
+     const modalTasks = modalTaskArr.filter((currentTask) => {return currentTask !== t})
+     setmodalTaskArr(modalTasks)
+    }else{
+     setmodalTaskArr([...modalTaskArr, tsk])
+    }
+    return modalTaskArr
+  }
+  )
+} else setmodalTaskArr([...modalTaskArr, tsk])
+  
+}
+
+const modalTasks = taskList.map((tsk, idx) =>{
+
+    return(
+      <li onClick={()=>addmodalTaskActions(tsk.Task)}>{tsk.Task}</li>
+    )
+})
+
+  function TaskModal(props){
     
     return(
-     option === 'add' ? 
+     props.option === 'add' ? 
+      <div className="modal-background">
+        <div className="modal-container">
+          <p onClick={()=> setisOpen(!isOpen)} className="modal-close">
+            X
+          </p>
+          <h2>Select Task(s) to add to Time Block:</h2>
+          <div className="modal-tasks">
+            <ul>{modalTasks}</ul>
+            <button>Add</button>
+          </div>
+        </div>
+      </div>
+      :
       <div className="modal-background">
         <div className="modal-container">
           <p className="modal-close">
@@ -44,8 +82,6 @@ export default function TaskTracker(props) {
           </p>
         </div>
       </div>
-      :
-      null
     )
   }
 
@@ -107,7 +143,7 @@ export default function TaskTracker(props) {
   
   return (
     <div className="Task-Tracker-container load">
-      {isOpen === true ?  taskModal('add') : null}
+      {isOpen === true ?  <TaskModal option='add'></TaskModal> : null}
       <div className="todo-list-container">
         <form>
           <input type="text" className="todo-input" value={taskItem} onChange={(e)=>addValues(e.target.value)}/>
@@ -144,7 +180,7 @@ export default function TaskTracker(props) {
          </ul>
          </div>
          <div className="task-action-buttons">
-           <button onClick={addCompTasks(taskList,blockInfo[0].Display)}>Add Completed Task</button>
+           <button onClick={()=>addCompTasks(taskList,blockInfo[0].Display)}>Add Completed Task</button>
            <button>Remove Task</button>
          </div>
          </div>
@@ -199,7 +235,7 @@ function taskToCurrentBlk(task, blk){
   block.style.background = `gold`
 }
 function addCompTasks(tasks,idx){
-  
+  setisOpen(!isOpen)
 }
 
 function showTasks(blk){
