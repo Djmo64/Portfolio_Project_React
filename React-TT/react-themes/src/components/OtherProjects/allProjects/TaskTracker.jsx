@@ -17,14 +17,16 @@ export default function TaskTracker(props) {
   const [blockInfo, setBlockInfo] = useState([{Task: [],Display : '' }])
   const [isOpen, setisOpen] = useState(false)
   const [modalTaskArr, setmodalTaskArr] = useState([])
+  const [option, setOption] = useState()
 
   useEffect(()=>{
     if(blockTasks.length === 0){
       setblockTasks(array())
       console.log('added!')
     }
-    console.log(modalTaskArr)
-  }, [taskList,modalTaskArr])
+    console.log(blockTasks)
+    console.log(blockInfo[0].Display)
+  }, [taskList,blockTasks])
 
 
   const array = () =>{
@@ -71,7 +73,7 @@ const modalTasks = taskList.map((tsk, idx) =>{
                  <h2>Select Task(s) to add to Time Block:</h2>
                  <div className="modal-tasks">
                    <ul>{modalTasks}</ul>
-                   <button>Add</button>
+                   <button onClick={()=>tasktoclickedblock(modalTaskArr, props.block)}>Add</button>
                  </div>
                </div>
              </div>
@@ -175,12 +177,11 @@ const modalTasks = taskList.map((tsk, idx) =>{
         </p>
       </div>
       :
-      <div onClick={()=> showTasks(blk)} key={index} className={blocktime < blk ? "blocks" : "blocks-full"}>
+      <div style={blockTasks.length > 0 ? blockTasks[blk].Task.length > 0 ? {background : 'gold'}: null : null} onClick={()=> showTasks(blk)} key={index} className={blocktime < blk ? "blocks" : "blocks-full"}>
         {blk}
         {blockTasks.length > 0 ?
           blockTasks[blk].Task.length > 0 ? 1 : null
         : null}
-        {/* style={blockTasks[blk].Task.length > 0 ? {background: 'gold'}: {background: 'transparent'} } */}
       </div>
     ) 
   })
@@ -188,7 +189,7 @@ const modalTasks = taskList.map((tsk, idx) =>{
   
   return (
     <div className="Task-Tracker-container load">
-      {isOpen === true ?  <TaskModal option='add'></TaskModal> : null}
+      {isOpen === true ?  <TaskModal option={option} block={blockInfo[0].Display}></TaskModal> : null}
       <div className="todo-list-container">
         <form>
           <input type="text" className="todo-input" value={taskItem} onChange={(e)=>addValues(e.target.value)}/>
@@ -225,7 +226,7 @@ const modalTasks = taskList.map((tsk, idx) =>{
          </ul>
          </div>
          <div className="task-action-buttons">
-           <button onClick={()=>addCompTasks(taskList,blockInfo[0].Display)}>Add Completed Task</button>
+           <button onClick={()=>addCompTasks()}>Add Completed Task</button>
            <button>Remove Task</button>
          </div>
          </div>
@@ -279,7 +280,8 @@ function taskToCurrentBlk(task, blk){
   const block = document.getElementById(`blocktive`)
   block.style.background = `gold`
 }
-function addCompTasks(tasks,idx){
+function addCompTasks(){
+  setOption('add')
   setisOpen(!isOpen)
 }
 
@@ -287,7 +289,12 @@ function showTasks(blk){
   setBlockInfo([{Task: blockTasks[blk].Task, Display: blk}])
 }
 function tasktoclickedblock(task, blk){
-  blockTasks[blk].Task = [...blockTasks[blk].Task, task]
+  task.map((t)=>{
+    blockTasks[blk].Task.push(t)
+  })
+  setmodalTaskArr([])
+  setisOpen(!isOpen)
+  console.log(blockTasks[blk].Task)
   //needs modal
 }
 
