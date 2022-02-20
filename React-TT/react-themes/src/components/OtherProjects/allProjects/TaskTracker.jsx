@@ -314,15 +314,16 @@ function tasktoclickedblock(task, blk){
   setmodalTaskArr([])
   setisOpen(!isOpen)
   
-  //needs modal
 }
 
 function taskfromclickedblock(task, blk){
-//filter logic could be wrong here
+
 
   let newTasks = []
   task.map((t)=>{
-  newTasks = blockTasks[blk].Task.filter(tsk => {return tsk !== t } )
+  blockTasks[blk].Task.filter(function(tsk){
+    return tsk !== t ? newTasks = [tsk]: null;
+  }  )
   })
 
   const update = blockTasks.map((tsk) => {
@@ -333,8 +334,9 @@ function taskfromclickedblock(task, blk){
   }
     
     )
+  
   setblockTasks(update)
-  setBlockInfo([{Task: blockTasks[blk].Task, Display: blk}])
+  setBlockInfo([{Task: newTasks, Display: blk}])
   setmodalTaskArr([])
   setisOpen(!isOpen)
   
