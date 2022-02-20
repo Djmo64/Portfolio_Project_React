@@ -22,11 +22,9 @@ export default function TaskTracker(props) {
   useEffect(()=>{
     if(blockTasks.length === 0){
       setblockTasks(array())
-      console.log('added!')
     }
-    console.log(blockTasks)
-    console.log(blockInfo[0].Display)
-  }, [taskList,blockTasks])
+    console.log(modalTaskArr)
+  }, [taskList,modalTaskArr])
 
 
   const array = () =>{
@@ -62,6 +60,14 @@ const modalTasks = taskList.map((tsk, idx) =>{
 
   function TaskModal(props){
     
+    const modalBlockTasks = blockTasks[props.block].Task.map((tsk, idx) =>{
+      return(
+        <li onClick={()=>addmodalTaskActions(tsk)}>{tsk}</li>
+      )
+  })
+    
+    
+    
     switch(props.option){
       case 'add':
         return(
@@ -70,7 +76,7 @@ const modalTasks = taskList.map((tsk, idx) =>{
                  <p onClick={()=> setisOpen(!isOpen)} className="modal-close">
                    X
                  </p>
-                 <h2>Select Task(s) to add to Time Block:</h2>
+                 <h2>Select Task(s) to add to time block:</h2>
                  <div className="modal-tasks">
                    <ul>{modalTasks}</ul>
                    <button onClick={()=>tasktoclickedblock(modalTaskArr, props.block)}>Add</button>
@@ -82,9 +88,14 @@ const modalTasks = taskList.map((tsk, idx) =>{
         return(
           <div className="modal-background">
          <div className="modal-container">
-           <p className="modal-close">
+           <p onClick={()=> setisOpen(!isOpen)} className="modal-close">
              X
            </p>
+           <h2>Select Task(s) to remove from time block:</h2>
+           <div className="modal-tasks">
+                   <ul>{modalBlockTasks}</ul>
+                   <button onClick={()=> taskfromclickedblock(modalTaskArr, props.block)}>Remove</button>
+                 </div>
          </div>
        </div>
         )
@@ -227,7 +238,7 @@ const modalTasks = taskList.map((tsk, idx) =>{
          </div>
          <div className="task-action-buttons">
            <button onClick={()=>addCompTasks()}>Add Completed Task</button>
-           <button>Remove Task</button>
+           <button onClick={()=>removeCompTasks()}>Remove Task</button>
          </div>
          </div>
         : null
@@ -280,8 +291,16 @@ function taskToCurrentBlk(task, blk){
   const block = document.getElementById(`blocktive`)
   block.style.background = `gold`
 }
+
+
+
 function addCompTasks(){
   setOption('add')
+  setisOpen(!isOpen)
+}
+
+function removeCompTasks(){
+  setOption('remove')
   setisOpen(!isOpen)
 }
 
@@ -294,8 +313,31 @@ function tasktoclickedblock(task, blk){
   })
   setmodalTaskArr([])
   setisOpen(!isOpen)
-  console.log(blockTasks[blk].Task)
+  
   //needs modal
+}
+
+function taskfromclickedblock(task, blk){
+//filter logic could be wrong here
+
+  let newTasks = []
+  task.map((t)=>{
+  newTasks = blockTasks[blk].Task.filter(tsk => {return tsk !== t } )
+  })
+
+  const update = blockTasks.map((tsk) => {
+    if(tsk.Index === blk ){
+      tsk.Task = newTasks
+    }
+    return tsk
+  }
+    
+    )
+  setblockTasks(update)
+  setBlockInfo([{Task: blockTasks[blk].Task, Display: blk}])
+  setmodalTaskArr([])
+  setisOpen(!isOpen)
+  
 }
 
 function removeFromList(Item, idx){
