@@ -23,30 +23,30 @@ export default function TaskTracker(props) {
     if(blockTasks.length === 0){
       setblockTasks(array())
     }
-    console.log(modalTaskArr)
-  }, [taskList,modalTaskArr])
+  }, [taskList])
 
 
   const array = () =>{
      const arr = []
     for(let x = 0; x < 25; x++){
-    arr.push({Task: [], Index: x})
+    arr.push({Task: [], Index: x}) 
   } 
   return arr
 }
 
 function addmodalTaskActions(tsk){
+  
   if(modalTaskArr.length > 0){
-  modalTaskArr.map((t)=>{
-    if(t === tsk){
-     const modalTasks = modalTaskArr.filter((currentTask) => {return currentTask !== t})
+  
+    if(modalTaskArr.includes(tsk)){
+     const modalTasks = modalTaskArr.filter((currentTask) => {return currentTask !== tsk})
      setmodalTaskArr(modalTasks)
+     
     }else{
      setmodalTaskArr([...modalTaskArr, tsk])
+     
     }
-    return modalTaskArr
-  }
-  )
+    
 } else setmodalTaskArr([...modalTaskArr, tsk])
   
 }
@@ -54,7 +54,7 @@ function addmodalTaskActions(tsk){
 const modalTasks = taskList.map((tsk, idx) =>{
 
     return(
-      <li onClick={()=>addmodalTaskActions(tsk.Task)}>{tsk.Task}</li>
+      <li className={modalTaskArr.includes(tsk.Task) ? "active-modal-list" : "modal-list"} onClick={()=>addmodalTaskActions(tsk.Task)}>{tsk.Task}</li>
     )
 })
 
@@ -62,7 +62,7 @@ const modalTasks = taskList.map((tsk, idx) =>{
     
     const modalBlockTasks = blockTasks[props.block].Task.map((tsk, idx) =>{
       return(
-        <li onClick={()=>addmodalTaskActions(tsk)}>{tsk}</li>
+        <li className={modalTaskArr.includes(tsk) ? "active-modal-list" : "modal-list"} onClick={()=>addmodalTaskActions(tsk)}>{tsk}</li>
       )
   })
     
@@ -79,7 +79,9 @@ const modalTasks = taskList.map((tsk, idx) =>{
                  <h2>Select Task(s) to add to time block:</h2>
                  <div className="modal-tasks">
                    <ul>{modalTasks}</ul>
-                   <button onClick={()=>tasktoclickedblock(modalTaskArr, props.block)}>Add</button>
+                   <div className="modal-button-container">
+                   <button  onClick={()=>tasktoclickedblock(modalTaskArr, props.block)}>Add</button>
+                   </div>
                  </div>
                </div>
              </div>

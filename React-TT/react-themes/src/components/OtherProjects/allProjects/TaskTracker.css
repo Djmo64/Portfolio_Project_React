@@ -117,7 +117,7 @@
 .modal-close{
     width: 20px;
     margin: 0;
-    padding: 5px;
+    padding: 1px;
     text-align: center;
     background: gray;
     margin-left: 5px;
@@ -125,4 +125,54 @@
     border-radius: 5px;
     border: 2px solid;
     position: absolute;
+}
+.modal-close:hover{
+    background: black;
+    color: gold;
+    cursor: pointer;
+}
+.modal-list{
+    height: 5vh;
+    border-radius: 5px;
+    width: 200px;
+    margin: 2px;
+    border: 2px solid black;
+    list-style-position: inside;
+    padding-left: 5px;
+}
+
+.modal-list:hover{
+    background: black;
+    color: gold;
+    cursor: pointer;
+}
+
+.active-modal-list{
+    background: gold;
+    height: 5vh;
+    border-radius: 5px;
+    width: 200px;
+    margin: 2px;
+    border: 2px solid black;
+    list-style-position: inside;
+    padding-left: 5px;
+}
+.active-modal-list:hover{
+    cursor: pointer;
+    background: black;
+    color: gold;
+}
+.modal-tasks ul{
+    transition: .5s ease;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 25vh;
+    overflow: hidden;
+    overflow-y: scroll;
+    max-width: 45vw;
+}
+.modal-tasks button{
+    
 }
