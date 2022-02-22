@@ -53,7 +53,7 @@ export function DayTimer(props){
      
 
      return (
-         <div style={{color:'gray'}}>
+         <div >
             {timerhours < 10 ? '0' + timerhours : timerhours}
             : {timermins < 10 ? '0' + timermins :timermins}
             : {timersecs < 10 ? '0' + timersecs :timersecs} 

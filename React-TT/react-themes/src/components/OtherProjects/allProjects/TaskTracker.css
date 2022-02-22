@@ -85,6 +85,12 @@
     flex-direction: column;
     justify-content: space-between;
 }
+.Task-block-timer{
+    color: gold ;
+    margin-top: 3vh;
+    font-size: xxx-large;
+    text-align: center;
+}
 .finished-tasks-header{
     color: gray;
     margin-top: 10px;
@@ -174,5 +180,78 @@
     max-width: 45vw;
 }
 .modal-tasks button{
-    
+    width: 10vw;
+    background: gray;
+    height: 6vh;
+    border: 2px solid;
+    border-radius: 5px;
+    font-size: larger;
 }
+.modal-tasks button:hover{
+    cursor: pointer;
+    background: black;
+    color: gold;
+}
+.modal-button-container{
+    width: 100%;
+    text-align: center;
+}
+
+.block-task-list li{
+    width: 190px;
+    margin-top: 10px;
+    color: gold;
+    animation: glitch 1s linear infinite;
+}
+
+.block-task-list li:before{
+    animation: glitchTop 2s linear infinite;
+    clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+  }
+  .block-task-list li:after{
+    animation: glitchBotom 1.5s linear infinite;
+    clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+    -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+  }
+ 
+.block-task-list li:before,
+  .block-task-list li:after{
+  content: attr(title);
+  position: absolute;
+  left: 2px; 
+}
+
+@keyframes glitch{
+    2%,64%{
+      transform: translate(0px,0) skew(0deg);
+    }
+    4%,60%{
+      transform: translate(0px,0) skew(0deg);
+    }
+    62%{
+      transform: translate(0,0) skew(5deg); 
+    }
+  }
+  @keyframes glitchTop{
+    2%,64%{
+      transform: translate(2px,-2px);
+    }
+    4%,60%{
+      transform: translate(-2px,2px);
+    }
+    62%{
+      transform: translate(13px,-1px) skew(-13deg); 
+    }
+  }
+  @keyframes glitchBotom{
+    2%,64%{
+      transform: translate(-2px,0);
+    }
+    4%,60%{
+      transform: translate(-2px,0);
+    }
+    62%{
+      transform: translate(-22px,5px) skew(21deg); 
+    }
+  }

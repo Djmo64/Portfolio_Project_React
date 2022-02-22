@@ -96,7 +96,9 @@ const modalTasks = taskList.map((tsk, idx) =>{
            <h2>Select Task(s) to remove from time block:</h2>
            <div className="modal-tasks">
                    <ul>{modalBlockTasks}</ul>
+                   <div className="modal-button-container">
                    <button onClick={()=> taskfromclickedblock(modalTaskArr, props.block)}>Remove</button>
+                   </div>
                  </div>
          </div>
        </div>
@@ -225,16 +227,18 @@ const modalTasks = taskList.map((tsk, idx) =>{
                 {blocks}
               </div>
         </div>
+        <div className="Task-block-timer">
         <DayTimer getValues={(hours, mins) => setValues(hours, mins)}/>
+        </div>
       </div>
       
         {blockTasks.length > 0 ?
         <div className="blockTasks-container">
           <div className="block-tasks-and-actions">
           <div className="finished-tasks-header">Finished Tasks for hour {blockInfo[0].Display}:</div>
-          <ul>
+          <ul className="block-task-list">
           {blockInfo[0].Task.map((tsk) => {
-            return <li style={{color: 'gray', textAlign: 'start'}}>{tsk}</li>
+            return <li title={tsk} style={{ textAlign: 'start'}}>{tsk}</li>
           })}
          </ul>
          </div>
