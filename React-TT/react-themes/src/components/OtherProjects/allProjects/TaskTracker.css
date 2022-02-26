@@ -5,10 +5,12 @@
     border-radius: 5px;
     display: flex;
     justify-content: space-around;
+    border: 5px solid gold;
+    outline: 3px solid;
 }
 .meter-grid{
-    border: 2px solid gray;
-    color: gray;
+    border: 2px solid white;
+    color: white;
     width: 435px;
     height: 50vh;
     text-align-last: center;
@@ -27,11 +29,15 @@
     max-width: 440px;
 }
 .blocks{
-    width: 60px;
+    display: flex;
+    width: 4vw;
+    justify-content: center;
+    flex-direction: column;
     border: 2px solid;
-    height: 50px;
+    height: 9.5vh;
     border-radius: 5px;
     margin: 1px;
+    
 }
 .blocks:hover{
     background: white;
@@ -39,10 +45,16 @@
     cursor: pointer;
     transition: .5s ease;
 }
+.blocks i{
+    color: green;
+}
 .blocks-full{
-    width: 60px;
+    display: flex;
+    width: 4vw;
+    justify-content: center;
+    flex-direction: column;
     border: 2px solid;
-    height: 50px;
+    height: 9.5vh;
     border-radius: 5px;
     margin: 1px;
     background: lightgray;
@@ -53,14 +65,26 @@
     cursor: pointer;
     transition: .5s ease;
 }
+.blocks-full i{
+    color: green;
+}
 .block-act{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     margin: 0;
     width: 100%;
     height: 100%;
 }
+.block-act-overlay{
+    height: 100%;
+    width: 100%;
+}
+
 .pulse{
     animation: pulsate 3s infinite;
 }
+
 
 @keyframes pulsate{
     0%{
@@ -92,12 +116,27 @@
     text-align: center;
 }
 .finished-tasks-header{
-    color: gray;
+    color: white;
     margin-top: 10px;
 }
 .task-action-buttons{
     margin-bottom: 5vh;
 }
+.task-action-buttons button{
+    background: gold;
+    border: 2px solid;
+    border-radius: 5px;
+    font-size: medium;
+    padding: 5px;
+}
+.task-action-buttons button:hover{
+    background: black;
+    color: gold;
+    border: 2px solid gold;
+    cursor: pointer;
+    animation: glitch 1s linear infinite;
+}
+
 .modal-background{
     background: rgba(255, 255, 255, 60%);
     /* opacity: 0.6; */
@@ -196,6 +235,26 @@
     width: 100%;
     text-align: center;
 }
+.block-task-list{
+    max-height: 50vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    overflow-x: scroll;
+    margin-bottom: 0;
+}
+.block-task-list::-webkit-scrollbar{
+    height: 10px;
+    background: transparent;
+}
+.block-task-list::-webkit-scrollbar-thumb{
+    background-color: gold;
+    border-radius: 20px;
+}
+.block-task-list::-webkit-scrollbar-button{
+    height: 8px;
+}
 
 .block-task-list li{
     width: 190px;
@@ -220,6 +279,9 @@
   content: attr(title);
   position: absolute;
   left: 2px; 
+}
+.glitch{
+    animation: glitch 1s linear infinite;
 }
 
 @keyframes glitch{

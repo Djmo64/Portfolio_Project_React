@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import "../allProjects/AllProjects.css";
 import "../allProjects/TaskTracker.css";
 import {DayTimer} from "./SimpleTimer";
+import "../../../App.css"
+ /* CRT FILTER FROM http://aleclownes.com/2017/02/01/crt-display.html */
+
 
 export default function TaskTracker(props) {
 
@@ -14,7 +17,7 @@ export default function TaskTracker(props) {
   const hourblocks = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]
   const [blockTasks, setblockTasks] = useState([])
   const blocktime = 24 - val1;
-  const [blockInfo, setBlockInfo] = useState([{Task: [],Display : '' }])
+  const [blockInfo, setBlockInfo] = useState([{Task: [],Display : 1 }])
   const [isOpen, setisOpen] = useState(false)
   const [modalTaskArr, setmodalTaskArr] = useState([])
   const [option, setOption] = useState()
@@ -23,13 +26,14 @@ export default function TaskTracker(props) {
     if(blockTasks.length === 0){
       setblockTasks(array())
     }
+    console.log(blockTasks)
   }, [taskList])
 
 
   const array = () =>{
      const arr = []
     for(let x = 0; x < 25; x++){
-    arr.push({Task: [], Index: x}) 
+    arr.push({Task: [], Index: arr.length}) 
   } 
   return arr
 }
@@ -121,30 +125,7 @@ const modalTasks = taskList.map((tsk, idx) =>{
         default : console.log('none')
     }
     
-    // return(
-      
-    //  props.option === 'add' ? 
-    //   <div className="modal-background">
-    //     <div className="modal-container">
-    //       <p onClick={()=> setisOpen(!isOpen)} className="modal-close">
-    //         X
-    //       </p>
-    //       <h2>Select Task(s) to add to Time Block:</h2>
-    //       <div className="modal-tasks">
-    //         <ul>{modalTasks}</ul>
-    //         <button>Add</button>
-    //       </div>
-    //     </div>
-    //   </div>
-    //   :
-    //   <div className="modal-background">
-    //     <div className="modal-container">
-    //       <p className="modal-close">
-    //         X
-    //       </p>
-    //     </div>
-    //   </div>
-    // )
+
   }
 
   function setValues(v1, v2){
@@ -185,17 +166,20 @@ const modalTasks = taskList.map((tsk, idx) =>{
     return(
       blocktime === blk  ? 
       <div onClick={()=> showTasks(blk)}  key={index}id={`blocktive`} className={'blocks pulse'}>
-        <p  className="block-act" style={{background : `linear-gradient(to top, white ${blockpercent}%, transparent 0%)`}}>
-          {blk}
-            {blockTasks[blk].Task.length > 0 ? 'yes' : null}
+        <div className="block-act-overlay">
+        <p  className="block-act" style={{background : `linear-gradient(to top, white ${blockpercent}%, transparent 0%)`, color: 'gray'}}>
+          
+            {blk}
+            {blockTasks[blk].Task.length > 0 ? <i className="fas fa-check"></i> : null}
           
         </p>
+        </div>
       </div>
       :
       <div style={blockTasks.length > 0 ? blockTasks[blk].Task.length > 0 ? {background : 'gold'}: null : null} onClick={()=> showTasks(blk)} key={index} className={blocktime < blk ? "blocks" : "blocks-full"}>
         {blk}
         {blockTasks.length > 0 ?
-          blockTasks[blk].Task.length > 0 ? 1 : null
+          blockTasks[blk].Task.length > 0 ? <i className="fas fa-check"></i> : null
         : null}
       </div>
     ) 
@@ -203,9 +187,9 @@ const modalTasks = taskList.map((tsk, idx) =>{
 
   
   return (
-    <div className="Task-Tracker-container load">
+    <div className="Task-Tracker-container load crt">
       {isOpen === true ?  <TaskModal option={option} block={blockInfo[0].Display}></TaskModal> : null}
-      <div className="todo-list-container">
+      <div className="todo-list-container ">
         <form>
           <input type="text" className="todo-input" value={taskItem} onChange={(e)=>addValues(e.target.value)}/>
           <button className="todo-btn" onClick={addTodo}>
@@ -215,7 +199,7 @@ const modalTasks = taskList.map((tsk, idx) =>{
 
         <div className="todo-container">
           <ul className="todo-list" onClick={listAction}>
-            {List.length > 0 ? List : <li style={{color: 'gray', textAlign: 'center'}}>Add Daily Tasks!</li>}
+            {List.length > 0 ? List : <li style={{color: 'white', textAlign: 'center'}}>Add Daily Tasks!</li>}
             </ul>
         </div>
            
@@ -227,7 +211,7 @@ const modalTasks = taskList.map((tsk, idx) =>{
                 {blocks}
               </div>
         </div>
-        <div className="Task-block-timer">
+        <div className="Task-block-timer glitch">
         <DayTimer getValues={(hours, mins) => setValues(hours, mins)}/>
         </div>
       </div>
@@ -290,12 +274,12 @@ function addValues(val){
 }
 
 function taskToCurrentBlk(task, blk){
-  
+  if( !blockTasks[blk].Task.includes(task)){
   blockTasks[blk].Task = [...blockTasks[blk].Task, task]
   setBlockInfo([{Task: blockTasks[blk].Task, Display: blk}])
   
   const block = document.getElementById(`blocktive`)
-  block.style.background = `gold`
+  block.style.background = `gold`}
 }
 
 
@@ -338,8 +322,9 @@ function taskfromclickedblock(task, blk){
     }
     return tsk
   }
-    
     )
+
+    console.log(update)
   
   setblockTasks(update)
   setBlockInfo([{Task: newTasks, Display: blk}])
@@ -350,7 +335,10 @@ function taskfromclickedblock(task, blk){
 
 function removeFromList(Item, idx){
   const Index = taskList.findIndex(tl => tl.Task === Item)
-  setTaskList(taskList.filter(tskl => { return tskl.Index !== Index && tskl.Task !== Item}))
+  const newTaskList = taskList.filter(function(Itm){
+    return Itm.Task !== Itm && Itm.Index !== Index
+  })
+  setTaskList(newTaskList)
  
 }
 }
