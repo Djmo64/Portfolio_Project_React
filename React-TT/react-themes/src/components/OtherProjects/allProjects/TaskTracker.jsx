@@ -252,16 +252,6 @@ function listAction(e){
     const className = e.target;
     
 
-    // if(className.classList[0] === 'remove-btn'){
-    //     const parent = className.parentElement;
-    //     parent.classList.add('vanish');
-    //     parent.addEventListener('transitionend', ()=>{
-    //     parent.remove();
-          
-        
-    //     });
-        
-    // }
     if(className.classList[0] === 'check-btn'){
         const parent = className.parentElement;
         parent.classList.add("completed");

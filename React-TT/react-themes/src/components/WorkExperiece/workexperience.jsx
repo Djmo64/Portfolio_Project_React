@@ -34,7 +34,7 @@ export default function WorkE(props){
         },
         {
             title: 'Upwork:  Freelance developer(Contract)',
-            date: 'January 2019 – Present',
+            date: 'January 2019 – January 2022',
             body: 'I have taken and am currently an active freelance developer, working on projects as needed for clientele. Primarily taking projects that require react implementation or CSS/Sass styling.',
             icons: [reactIcon,jsIcon,nodeIcon,cssIcon,sassIcon,pythonIcon,mongoDBIcon,sqlIcon,rubyIcon]
         },

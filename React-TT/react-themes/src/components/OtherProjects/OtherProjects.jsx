@@ -4,7 +4,9 @@ import TaskTracker from './allProjects/TaskTracker'
 
 
 
+
 export default function OtherProjects(){
+
     return(
         <div className='otherprojects-temp-container'>
 
@@ -13,9 +15,11 @@ export default function OtherProjects(){
             <h1 style={{color:'gray'}} className='coming-soon'>Coming Soon!</h1>
         </div>
         <div className='project-temp-container'>
-            {/* <CountDown/> */}
+            {/* <CountDown/> completed*/}
             {/* <JapaneseBreakdown/> */}
-            <TaskTracker/>
+            {/* <TaskTracker/> completed */}
+            
+            
         </div>
         </div>
     )

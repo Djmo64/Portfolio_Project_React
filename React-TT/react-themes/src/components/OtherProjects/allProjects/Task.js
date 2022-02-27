@@ -1,15 +1,38 @@
-//DONT NEED THIS ANYMORE
+
+
+export default function Task(){
+
+
+
+
 var todoInput = document.querySelector('.todo-input');
 var todoButton = document.querySelector('.todo-btn');
 var todoList = document.querySelector('.todo-list');
 
 function handleForm(event) { event.preventDefault(); } 
 
+
 // document.addEventListener('DOMContentLoaded',getsave);
+return(
+    <div>
+    <h2>TODO LIST</h2>
+    <form>
+        <input type="text" class="todo-input">
+        <button class="todo-btn" type="submit">
+            <i class="fas fa-plus-square"></i>
+        </button>
+        </input>
+    </form>
+    <div class="todo-container">
+        <ul class="todo-list">
+            
+        </ul>
+    </div>
+    </div>
+)
 
 todoButton.addEventListener('click', addTodo);
 todoList.addEventListener('click', listAction); 
-
 
 
 
@@ -59,6 +82,7 @@ function listAction(e){
     } 
 
 }
+
 
 // function autoSave(todo){
 //     let todos;
@@ -113,5 +137,4 @@ function listAction(e){
 //     todos.splice(todos.indexOf(todoIndex), 1);
 //     localStorage.setItem('todos', JSON.stringify(todos));
 // }
-
-//DONT NEED THIS ANYMORE
+}

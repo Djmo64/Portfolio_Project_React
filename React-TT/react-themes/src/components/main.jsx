@@ -18,7 +18,7 @@ export function Main(){
                    <Route exact path= '/Skills' component={Skills}/>
                    <Route exact path= '/WorkExperience' component={WorkE}/>
                    <Route exact path= '/ContactInformation' component={ContactI}/>
-                   <Route exact path= '/OtherProjects' component={OtherProjects}/>
+                   <Route exact path= '/Projects' component={OtherProjects}/>
                    <Redirect to='/'/>
                </Switch>
           

@@ -10,6 +10,7 @@ export default function Skills(props) {
   const passives = ["Java", "Redux", "MongoDB", "SQL", "Express.js", "Google Cloud"];
   const [Flipped, setFlipped] = useState(false);
   
+  
   const p = passives.map((pass, index) => {
     return (
       <li style={{ animationDelay: `1.${index}s` }} title={pass}>
@@ -18,23 +19,25 @@ export default function Skills(props) {
     );
   });
 
-  function Progress(props){
+  const Progress = ({ full }) => {
     const [style, setStyle] = useState({});
 
      const newStyle = {
         opacity: 1,
-        width: `${props.full}%`,
-        animation: 'ease forwards'
+        width: `${full}%`,
       };
 
+    
     setTimeout((e) => {
+      
       setStyle(newStyle);
     }, 1000);
+    
     return (
       <div className="progress">
         <div className="progress-full" style={style}>
           <p>
-            <b>Rank: {props.full / 10}</b>
+            <b>Rank: {full / 10}</b>
           </p>
         </div>
       </div>

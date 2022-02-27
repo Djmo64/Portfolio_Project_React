@@ -36,8 +36,9 @@ function App() {
     "Overview",
     "Skills", 
     "Work Experience",
+    "Projects",
     "Contact Information",
-    "Other Projects",
+    
   ];
   const sideroutes = sideroute.map((s, index) => {
     const sRoute = s.replace(/\s+/g, '');
