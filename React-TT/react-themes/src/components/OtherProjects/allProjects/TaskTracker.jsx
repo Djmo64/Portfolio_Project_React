@@ -101,7 +101,7 @@ const modalTasks = taskList.map((tsk, idx) =>{
            <div className="modal-tasks">
                    <ul>{modalBlockTasks}</ul>
                    <div className="modal-button-container">
-                   <button onClick={()=> taskfromclickedblock(modalTaskArr, props.block)}>Remove</button>
+                   <button onClick={()=> taskfromclickedblock(modalTaskArr, blockInfo[0].Display)}>Remove</button>
                    </div>
                  </div>
          </div>
@@ -165,7 +165,7 @@ const modalTasks = taskList.map((tsk, idx) =>{
     
     return(
       blocktime === blk  ? 
-      <div onClick={()=> showTasks(blk)}  key={index}id={`blocktive`} className={'blocks pulse'}>
+      <div style={blockTasks.length > 0 ? blockTasks[blk].Task.length > 0 ? {background : 'gold'}: null : null}  onClick={()=> showTasks(blk)}   className={'blocks pulse'}>
         <div className="block-act-overlay">
         <p  className="block-act" style={{background : `linear-gradient(to top, white ${blockpercent}%, transparent 0%)`, color: 'gray'}}>
           
@@ -277,9 +277,8 @@ function taskToCurrentBlk(task, blk){
   if( !blockTasks[blk].Task.includes(task)){
   blockTasks[blk].Task = [...blockTasks[blk].Task, task]
   setBlockInfo([{Task: blockTasks[blk].Task, Display: blk}])
+  }
   
-  const block = document.getElementById(`blocktive`)
-  block.style.background = `gold`}
 }
 
 
@@ -312,9 +311,10 @@ function taskfromclickedblock(task, blk){
   let newTasks = []
   task.map((t)=>{
   blockTasks[blk].Task.filter(function(tsk){
-    return tsk !== t ? newTasks = [tsk]: null;
+    return tsk !== t ? newTasks = [...newTasks, tsk]: null;
   }  )
   })
+  console.log(newTasks)
 
   const update = blockTasks.map((tsk) => {
     if(tsk.Index === blk ){

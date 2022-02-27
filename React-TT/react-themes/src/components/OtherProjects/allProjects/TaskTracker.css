@@ -34,7 +34,7 @@
     justify-content: center;
     flex-direction: column;
     border: 2px solid;
-    height: 9.5vh;
+    height: 9vh;
     border-radius: 5px;
     margin: 1px;
     
@@ -54,7 +54,7 @@
     justify-content: center;
     flex-direction: column;
     border: 2px solid;
-    height: 9.5vh;
+    height: 9vh;
     border-radius: 5px;
     margin: 1px;
     background: lightgray;
@@ -128,6 +128,7 @@
     border-radius: 5px;
     font-size: medium;
     padding: 5px;
+    font-family: 'DotGothic16', sans-serif;
 }
 .task-action-buttons button:hover{
     background: black;
@@ -139,7 +140,6 @@
 
 .modal-background{
     background: rgba(255, 255, 255, 60%);
-    /* opacity: 0.6; */
     width: 100vw;
     height: 111.5vh;
     transform: translateY(-23.5vh);
@@ -225,6 +225,7 @@
     border: 2px solid;
     border-radius: 5px;
     font-size: larger;
+    font-family: 'DotGothic16', sans-serif;
 }
 .modal-tasks button:hover{
     cursor: pointer;

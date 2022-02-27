@@ -9,7 +9,7 @@ import stars from "../../assets/photos/stars.png";
 export default function Skills(props) {
   const passives = ["Java", "Redux", "MongoDB", "SQL", "Express.js", "Google Cloud"];
   const [Flipped, setFlipped] = useState(false);
-
+  
   const p = passives.map((pass, index) => {
     return (
       <li style={{ animationDelay: `1.${index}s` }} title={pass}>
@@ -18,21 +18,23 @@ export default function Skills(props) {
     );
   });
 
-  const Progress = ({ full }) => {
+  function Progress(props){
     const [style, setStyle] = useState({});
 
-    setTimeout((e) => {
-      const newStyle = {
+     const newStyle = {
         opacity: 1,
-        width: `${full}%`,
+        width: `${props.full}%`,
+        animation: 'ease forwards'
       };
+
+    setTimeout((e) => {
       setStyle(newStyle);
     }, 1000);
     return (
       <div className="progress">
         <div className="progress-full" style={style}>
           <p>
-            <b>Rank: {full / 10}</b>
+            <b>Rank: {props.full / 10}</b>
           </p>
         </div>
       </div>
