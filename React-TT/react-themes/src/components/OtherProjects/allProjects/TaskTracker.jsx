@@ -17,7 +17,7 @@ export default function TaskTracker(props) {
   const hourblocks = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]
   const [blockTasks, setblockTasks] = useState([])
   const blocktime = 24 - val1;
-  const [blockInfo, setBlockInfo] = useState([{Task: [],Display : 1 }])
+  const [blockInfo, setBlockInfo] = useState([{Task: [],Display : '' }])
   const [isOpen, setisOpen] = useState(false)
   const [modalTaskArr, setmodalTaskArr] = useState([])
   const [option, setOption] = useState()
@@ -26,7 +26,7 @@ export default function TaskTracker(props) {
     if(blockTasks.length === 0){
       setblockTasks(array())
     }
-    console.log(blockTasks)
+    
   }, [taskList])
 
 
@@ -146,9 +146,9 @@ const modalTasks = taskList.map((tsk, idx) =>{
         <li className="todo-item">
             {tsk.Task}
         </li>
-        <button onClick={()=> taskToCurrentBlk(tsk.Task, blocktime)} className="check-btn">
+        {/* <button onClick={()=> taskToCurrentBlk(tsk.Task, blocktime)} className="check-btn">
           <i className="fas fa-check"></i>
-        </button>
+        </button> */}
         <button onClick={()=>removeFromList(tsk.Task, tsk.Index)} className="remove-btn"> 
           <i className="fas fa-trash"></i>
         </button>
@@ -199,7 +199,7 @@ const modalTasks = taskList.map((tsk, idx) =>{
 
         <div className="todo-container">
           <ul className="todo-list" onClick={listAction}>
-            {List.length > 0 ? List : <li style={{color: 'white', textAlign: 'center'}}>Add Daily Tasks!</li>}
+            {List.length > 0 ? List : <li style={{color: 'white', textAlign: 'center'}}>Add a Daily Task!</li>}
             </ul>
         </div>
            
@@ -219,7 +219,7 @@ const modalTasks = taskList.map((tsk, idx) =>{
         {blockTasks.length > 0 ?
         <div className="blockTasks-container">
           <div className="block-tasks-and-actions">
-          <div className="finished-tasks-header">Finished Tasks for hour {blockInfo[0].Display}:</div>
+          <div className="finished-tasks-header">{blockInfo[0].Display === '' ? 'Click on a Block to Fill!' : 'Finished Tasks for hour: ' + blockInfo[0].Display} </div>
           <ul className="block-task-list">
           {blockInfo[0].Task.map((tsk) => {
             return <li title={tsk} style={{ textAlign: 'start'}}>{tsk}</li>

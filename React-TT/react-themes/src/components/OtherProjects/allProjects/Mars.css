@@ -1,0 +1,76 @@
+.mars-img{
+    width: 200px;
+      height: 200px;
+      object-fit: contain;
+     
+  }
+  .mars-items{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+  .Mars-container{
+    margin: 5vw;
+    background: white;
+  }
+  .mars-item-container{
+    background: lightgray;
+    margin: 10px;
+    padding: 5px;
+    border-radius: 5px;
+  }
+  .mars-item-container:hover{
+    background: gray;
+    color: gold;
+    transition: .3s ease;
+    cursor: pointer;
+    transform: scale(1.1);
+  }
+  .Mars-main-data{
+    height: 90vh;
+    width: 80vw;
+    overflow: hidden;
+    overflow-y: scroll;
+    border: 2px solid lightgray;
+    border-radius: 5px;
+    margin: 5px;
+  }
+  .filter-items{
+    display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      height: 90vh;
+  }
+  .filter-items > li{
+    padding: 15px;
+    border-radius: 5px;
+    background: lightgray;
+    list-style: none;
+    height: 35px;
+  }
+  .filter-items > li:hover{
+    background: gray;
+    color: gold;
+    transition: .3s ease;
+    cursor: pointer;
+  }
+  .Mars-data-container{
+    display: flex;
+      padding: 40px;
+  }
+  .nav-bar > h1{
+    background: black;
+    margin: 0;
+    padding: 10px;
+  }
+  .nav-bar b{
+    background: black;
+    width: 100%;
+    text-align: center;
+    height: 100%;
+    font-size: xx-large;
+  }
+  .img-container{
+    display: flex;
+    flex-direction: column;
+  }

@@ -7,7 +7,7 @@ import BBanner from "../../assets/photos/black-banner.png";
 import stars from "../../assets/photos/stars.png";
 
 export default function Skills(props) {
-  const passives = ["Java", "Redux", "MongoDB", "SQL", "Express.js", "Google Cloud"];
+  const passives = ["Java", "Redux-saga", "MongoDB", "SQL", "Express.js", "HTML"];
   const [Flipped, setFlipped] = useState(false);
   
   
@@ -64,9 +64,10 @@ export default function Skills(props) {
             <Progress full="85" />
           </div>
           <div className="skill-meter">
-            <h3>Node.js</h3>
+            <h3>React Native</h3>
             <Progress full="60" />
           </div>
+          <span style={{fontsize: 'small'}}>*For entertainment purposes only</span>
         </div>
         <div className="card-rating-container">
           <div
@@ -105,17 +106,17 @@ export default function Skills(props) {
               <div className="sprite-info">
                 <div className="text-padding">
                   <p>
-                    <b>Mid-Level Web Developer:</b>
+                    <b>Front-end Developer:</b>
                   </p>
                   <small>
-                    <b>Skilled in React -</b> familiar with concepts such as
-                    pure components, functional components, use of hooks,
-                    context Api, and life cycles.
+                    <b>Skilled in React -</b> Familiar with concepts such as
+                    state management,components structures, data fetching,
+                    and life cycles.
                   </small>
                   <br></br>
                   <small>
                     <b>Proficient in CSS -</b> Able to style and animate
-                    components using vanilla CSS and SASS.
+                    components using vanilla CSS and Preprocessors.
                   </small>
                 </div>
                 <div className="bottom-banner">

@@ -138,7 +138,7 @@ export default function ContactI(props) {
           </p>
         </div>
         <div className="contact-banner">
-          <img src={c.contactIcon} />
+          <img alt="somtheing" src={c.contactIcon} />
         </div>
       </div>
     );

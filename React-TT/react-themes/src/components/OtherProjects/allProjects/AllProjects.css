@@ -7,7 +7,7 @@
 .countdown-container{
     background-image: url('./img/cybersplash.jpg');
     margin: 100px;
-    height: 100vh;
+    height: 60vh;
     background-size: cover;
     background-position: center center;
     border-radius: 5px;
@@ -19,6 +19,8 @@
     height: 80%;
     align-items: center;
     margin: 0;
+    margin-left: 10vw;
+    margin-right: 10vw;
 }
 .c-time{
     color: gold;
@@ -156,3 +158,50 @@ form button:hover{
 }
 /* TaskTracker */
 
+.other-projects-container{
+    display: flex;
+    margin: 40px;
+    flex-direction: column;
+    background: white;
+    align-items: center;
+    border-radius: 5px;
+}
+.back-btn{
+    width: 150px;
+    font-size: x-large;
+    margin-bottom: 5px;
+    background: black;
+    color: gold;
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+}
+.project-list-container{
+    
+}
+.project-list{
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 500px;
+}
+.projectItem{
+    background: gold;
+    color: black;
+    padding: 15px;
+    font-size: xx-large;
+    border-radius: 5px;
+    margin-left: 15vw;
+    margin-right: 15vw;
+    text-align: center;
+    box-shadow: 0px 2px 5px 2px black;
+    font-weight: bold;
+    transition: .5s ease;
+}
+.projectItem:hover{
+    cursor: pointer;
+    transform: translateY(-15px);
+    box-shadow: 0px 3px 6px 4px black;
+    transition: .5s ease;
+}

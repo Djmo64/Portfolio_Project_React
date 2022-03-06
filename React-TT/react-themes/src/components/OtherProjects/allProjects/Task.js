@@ -1,39 +1,16 @@
-
-
-export default function Task(){
-
-
-
+import  "./TodoList";
 
 var todoInput = document.querySelector('.todo-input');
 var todoButton = document.querySelector('.todo-btn');
 var todoList = document.querySelector('.todo-list');
 
-function handleForm(event) { event.preventDefault(); } 
-
-
-// document.addEventListener('DOMContentLoaded',getsave);
-return(
-    <div>
-    <h2>TODO LIST</h2>
-    <form>
-        <input type="text" class="todo-input">
-        <button class="todo-btn" type="submit">
-            <i class="fas fa-plus-square"></i>
-        </button>
-        </input>
-    </form>
-    <div class="todo-container">
-        <ul class="todo-list">
-            
-        </ul>
-    </div>
-    </div>
-)
-
-todoButton.addEventListener('click', addTodo);
-todoList.addEventListener('click', listAction); 
-
+document.addEventListener('DOMContentLoaded',getsave);
+if(todoButton){
+    todoButton.addEventListener('click', addTodo);
+}
+if(todoList){
+    todoList.addEventListener('click', listAction);
+}
 
 
 
@@ -66,7 +43,7 @@ function addTodo(e){
 
 function listAction(e){
     const className = e.target;
-
+    e.preventDefault()
     if(className.classList[0] === 'remove-btn'){
         const parent = className.parentElement;
         parent.classList.add('vanish');
@@ -83,58 +60,58 @@ function listAction(e){
 
 }
 
+function autoSave(todo){
+    let todos;
+    if(localStorage.getItem('todos') === null){
+        todos = [];
+    }else{
+        todos = JSON.parse(localStorage.getItem('todos'));
+    }
+    todos.push(todo);
+    localStorage.setItem('todos', JSON.stringify(todos));
+}
 
-// function autoSave(todo){
-//     let todos;
-//     if(localStorage.getItem('todos') === null){
-//         todos = [];
-//     }else{
-//         todos = JSON.parse(localStorage.getItem('todos'));
-//     }
-//     todos.push(todo);
-//     localStorage.setItem('todos', JSON.stringify(todos));
-// }
-
-// function getsave(){
+function getsave(){
    
-//     let todos;
-//     if(localStorage.getItem('todos') === null){
-//         todos = [];
-//     }else{
-//         todos = JSON.parse(localStorage.getItem('todos'));
-//     }
-//     todos.forEach((todo)=>{
-//         const todoItem = document.createElement('div');
-//         todoItem.classList.add('todo');
+    let todos;
+    if(localStorage.getItem('todos') === null){
+        todos = [];
+    }else{
+        todos = JSON.parse(localStorage.getItem('todos'));
+    }
+    todos.forEach((todo)=>{
+        const todoItem = document.createElement('div');
+        todoItem.classList.add('todo');
     
-//         const newTodo = document.createElement('li');
-//         newTodo.innerText = todo;
-//         newTodo.classList.add('todo-item');
-//         todoItem.appendChild(newTodo);
+        const newTodo = document.createElement('li');
+        newTodo.innerText = todo;
+        newTodo.classList.add('todo-item');
+        todoItem.appendChild(newTodo);
     
-//         const checkButton = document.createElement('button');
-//         checkButton.innerHTML = '<i class="fas fa-check"></i>';
-//         checkButton.classList.add("check-btn");
-//         todoItem.appendChild(checkButton);
+        const checkButton = document.createElement('button');
+        checkButton.innerHTML = '<i class="fas fa-check"></i>';
+        checkButton.classList.add("check-btn");
+        todoItem.appendChild(checkButton);
     
     
-//         const removeButton = document.createElement('button');
-//         removeButton.innerHTML = '<i class="fas fa-trash"></i>';
-//         removeButton.classList.add("remove-btn");
-//         todoItem.appendChild(removeButton);
-//         todoList.appendChild(todoItem);
+        const removeButton = document.createElement('button');
+        removeButton.innerHTML = '<i class="fas fa-trash"></i>';
+        removeButton.classList.add("remove-btn");
+        todoItem.appendChild(removeButton);
+        if(todoList){
+            todoList.appendChild(todoItem);
+        }
         
-//     })
-// }
-// function removeSave(todo){
-//     let todos;
-//     if(localStorage.getItem('todos') === null){
-//         todos = [];
-//     }else{
-//         todos = JSON.parse(localStorage.getItem('todos'));
-//     }
-//     const todoIndex = todo.children[0].innerText;
-//     todos.splice(todos.indexOf(todoIndex), 1);
-//     localStorage.setItem('todos', JSON.stringify(todos));
-// }
+    })
+}
+function removeSave(todo){
+    let todos;
+    if(localStorage.getItem('todos') === null){
+        todos = [];
+    }else{
+        todos = JSON.parse(localStorage.getItem('todos'));
+    }
+    const todoIndex = todo.children[0].innerText;
+    todos.splice(todos.indexOf(todoIndex), 1);
+    localStorage.setItem('todos', JSON.stringify(todos));
 }

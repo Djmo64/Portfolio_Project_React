@@ -15,27 +15,27 @@ export default function WorkE(props){
     const [Section, setSection] = useState(2);
     const [WorkEx, setWorkEx] = useState([
         {
-            title: 'Vimbel: Remote - Front-end Developer(Contract)',
+            title: 'Vimbel: Remote - Front-end Developer/Mobile(Contract)',
             date: 'June 2021 – Present',
-            body: 'Currently developing UI and front facing functionality for workplace tool application. Working on both the web application and mobile. ',
+            body: 'Currently developing UI and front facing functionality for workplace tool application. Successfully built task management system for mobile application users and groups. Working on both the web application and mobile.',
             icons: [reactIcon,jsIcon,nodeIcon,cssIcon,sassIcon,mongoDBIcon]
         },
         {
-            title: 'Tasweiq Marketing: Remote - Full Stack Developer(Part-Time)',
+            title: 'Tasweiq Marketing: Remote - Full Stack Developer(Contract)',
             date: 'July 2020 – July 2021',
-            body: 'I have designed and implemented fully function Ecommerce web application components during agile development for overseas digital marketing platform using React.js library. I have also built backend databases for the company’s thousands of products as well as user accounts.',
+            body: 'Designed and implemented fully function ecommerce web application components during agile development for overseas digital marketing platform using React.js library. Built backend databases for the company’s products and user account authentification.',
             icons: [reactIcon,jsIcon,nodeIcon,cssIcon,sassIcon,mongoDBIcon]
         },
         {
             title: 'Cuti App: Remote - Web Developer(Part-Time)',
             date: 'February 2021 - June 2021',
-            body: 'Previously a partimer at a startup company. Assisting in front end and back end development.',
+            body: 'Worked part-time at a small startup. Assisting in building front-end components.',
             icons: [reactIcon,jsIcon,nodeIcon, cssIcon]
         },
         {
             title: 'Upwork:  Freelance developer(Contract)',
             date: 'January 2019 – January 2022',
-            body: 'I have taken and am currently an active freelance developer, working on projects as needed for clientele. Primarily taking projects that require react implementation or CSS/Sass styling.',
+            body: 'Currently an active freelance developer, working on projects as needed for clientele. Primarily taking projects that require react implementation or CSS styling.',
             icons: [reactIcon,jsIcon,nodeIcon,cssIcon,sassIcon,pythonIcon,mongoDBIcon,sqlIcon,rubyIcon]
         },
         {

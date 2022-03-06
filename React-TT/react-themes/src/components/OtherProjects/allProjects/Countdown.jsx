@@ -37,7 +37,7 @@ export function CountDown(props){
             setTimerMins(minutes);
             setTimerSecs(seconds);
         }
-       });
+       }, []);
     }
 
     useEffect(() => {

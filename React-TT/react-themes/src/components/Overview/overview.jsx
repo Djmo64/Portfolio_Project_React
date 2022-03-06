@@ -6,31 +6,29 @@ export default function overview(props) {
   return (
     <div className="overview-container load">
       <div className="bio">
-        <h1>Darron Moore - Software Engineer</h1>
+        <h1>Darron Moore - Freelance Web Developer</h1>
         <p>
         I am an adaptable software developer currently working as a fulltime freelance developer
-         Aiming to leverage proven critical thinking, problem solving, and communication skills.
+         Aiming to leverage proven critical thinking, problem solving, and communication skills;
           As well as software development experience to successfully fill the software engineering 
           role at your company. Frequently praised as hard working by my peers, supportive teamwork,
-           as well as dependable initiative, I can be relied upon to help your company achieve its goals.      
+           as well as dependable initiative, I can be relied upon to help your company achieve it's goals.      
         </p>
         <div className="stats">
           <div style={{ width: "45%" }}>
             <h1>Interests: </h1>
             <p>
-              <b>Reading</b> - I read mostly from the fantasy or horror genre.
-              I would like to one day write mt own.
+              <b>Reading</b> - I read mostly from the fantasy or horror genres.
+              I also write as a hobby.
             </p>
             <p>
-              <b>Exercising</b> - I enjoy weight lifting and running. I think Exercise should be a daily habit.
+              <b>Exercising</b> - I enjoy weight lifting and running. I believe exercise is an important daily habit.
             </p>
             <p>
-              <b>Gaming</b> - I mainly play RPG's and MMO's, the Final Fantasy
-              series is tops.
+              <b>Gaming</b> - I mainly play RPG's and MMO's, My favorite is Final Fantasy.
             </p>
             <p>
-              <b>Programming</b> - My favorite is web development and I love
-              using React!{" "}
+              <b>Volunteering</b> - I like to volunteer at local outreach programs and shelters on the weekends.
             </p>
           </div>
           <div style={{ width: "45%" }}>
@@ -48,19 +46,12 @@ export default function overview(props) {
               quickly and think outside the box.{" "}
             </p>
             <p>
-              <b>Quick Learner</b> - I have the competency learn efficiently and
-              quickly no matter the challenge.{" "}
+              <b>Quick Learner</b> - I have the competency to learn efficiently and
+              quickly, no matter the challenge.{" "}
             </p>
           </div>
         </div>
-        {/* <h1>Education - Kennesaw State University </h1>
-        <small className='smallDate'>January 2018 – July 2021</small>
-        <p>
-          B.S. Software Engineering Candidate. Currently attending the college
-          of computing and software engineering. Taken courses in advanced
-          programming principles, computer architecture, Advanced networks, Java
-          programming, and UI Development.{" "}
-        </p> */}
+    
       </div>
       <img src={Darron} />
     </div>
