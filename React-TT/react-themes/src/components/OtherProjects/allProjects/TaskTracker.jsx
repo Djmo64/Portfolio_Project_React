@@ -274,13 +274,17 @@ function taskToCurrentBlk(task, blk){
 
 
 function addCompTasks(){
+  
   setOption('add')
-  setisOpen(!isOpen)
+  blockInfo[0].Display !== '' ? setisOpen(!isOpen) : setOption()
+  
+  
+  
 }
 
 function removeCompTasks(){
   setOption('remove')
-  setisOpen(!isOpen)
+  blockInfo[0].Display !== '' ? setisOpen(!isOpen) : setOption()
 }
 
 function showTasks(blk){
