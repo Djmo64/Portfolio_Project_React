@@ -175,33 +175,51 @@ form button:hover{
     border-radius: 5px;
     border: none;
     padding: 5px;
+    cursor: pointer;
 }
 .project-list-container{
     
 }
 .project-list{
-    
     display: flex;
-    flex-direction: column;
     justify-content: space-evenly;
-    height: 500px;
+    height: 90vh;
+    width: 95vw;
+    padding: 2vw;
+    flex-wrap: wrap;
 }
 .projectItem{
     background: gold;
-    color: black;
+    color: transparent;
     padding: 15px;
-    font-size: xx-large;
+    font-size: x-large;
     border-radius: 5px;
-    margin-left: 15vw;
-    margin-right: 15vw;
     text-align: center;
     box-shadow: 0px 2px 5px 2px black;
     font-weight: bold;
     transition: .5s ease;
+    width: 20vw;
+    margin-top: 5vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    opacity: .7;
+    
+}
+.projectItem h3{
+    width: 100%;
+    margin-top: 0;
 }
 .projectItem:hover{
     cursor: pointer;
     transform: translateY(-15px);
     box-shadow: 0px 3px 6px 4px black;
     transition: .5s ease;
+    opacity: 1;
+    color: gold;
+}
+.projectItem:hover > h3{
+    transition: .5s ease;
+    color: gold;
+    background: #000000bf;
 }

@@ -4,6 +4,15 @@ import {CountDown} from './allProjects/Countdown'
 import Mars from './allProjects/Mars'
 import TaskTracker from './allProjects/TaskTracker'
 import { TodoList } from './allProjects/TodoList'
+import ImageSlider from './ImageSlider'
+import bww1 from '../../assets/photos2/BWW1.png'
+import tsw1 from '../../assets/photos2/TSW1.png'
+import tswa3 from '../../assets/photos2/TSWA3.png'
+import rd4 from '../../assets/photos2/RD4.png'
+import tskproj from '../../assets/photos2/Task.png'
+import marsproj from '../../assets/photos2/Mars.png'
+import cntproj from '../../assets/photos2/count.png'
+import {BwwData,TswaData,TswData,RdData} from './allProjects/SliderData'
 
 
 {/* <JapaneseBreakdown/> TODO */}
@@ -23,25 +32,55 @@ export default function OtherProjects(){
     }
 
     function Project(props){
-        const list = ['Simple Countdown', 'Mars Photos', 'Task Tracker']
+        const list = [  {title:'Beyond Words Workshops', img: bww1},
+                        {title:'Tasweiq Digital Marketing',img: tsw1},
+                        {title:'Tasweiq Analytics',img: tswa3},
+                        {title:'Razing Dawn Blog',img: rd4},
+                        {title:'Task Tracker',img: tskproj},
+                        {title:'Mars Photos',img: marsproj},
+                        {title:'Simple Countdown',img: cntproj} ]
         switch(props.project){
             case 0:
                 return(
                     <>
-                        <CountDown/>
+                       <ImageSlider slides={BwwData}/> 
                     </>
                 )
             case 1:
                 return(
                     <>
-                        <Mars/>
+                        <ImageSlider slides={TswData}/>
                     </>
                 )
           
             case 2:
                 return(
                     <>
+                        <ImageSlider slides={TswaData}/>
+                    </>
+                )
+            case 3:
+                return(
+                    <>
+                        <ImageSlider slides={RdData}/>
+                    </>
+                )
+            case 4:
+                return(
+                    <>
                         <TaskTracker/>
+                    </>
+                )
+            case 5:
+                return(
+                    <>
+                        <Mars/>
+                    </>
+                )
+            case 6:
+                return(
+                    <>
+                        <CountDown/>
                     </>
                 )
             default:
@@ -49,9 +88,11 @@ export default function OtherProjects(){
                     <div className='project-list load'style={{transition: '1.5s ease'}}>
                         {list.map((p, idx)=>{
                             return(
-                                <div onClick={()=>handleMount(idx)} className='projectItem'>
-                                    {p}
+                               
+                                <div style={{ backgroundImage: `url(${p.img}) ` }} onClick={()=>handleMount(idx)} className='projectItem'>
+                                    <h3>{p.title}</h3>
                                 </div>
+                                
                             )
                         })}
                     </div>
