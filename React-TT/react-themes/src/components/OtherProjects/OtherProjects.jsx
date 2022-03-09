@@ -43,13 +43,25 @@ export default function OtherProjects(){
             case 0:
                 return(
                     <>
-                       <ImageSlider slides={BwwData}/> 
+                       <ImageSlider slides={BwwData}/>
+                       <div className='proj-info'>
+                        <p>Info: Screen shots from internship website created for Beyond Words workshops and retreats.</p>
+                        <p>Year: 2019</p>
+                        <p>Technology: HTML, CSS</p>
+                        <p>Theme: Theme style based on wire frame from company.</p>   
+                        </div> 
                     </>
                 )
             case 1:
                 return(
                     <>
                         <ImageSlider slides={TswData}/>
+                        <div className='proj-info'>
+                        <p>Info: Screen shots from Ecommerce site made for Taseiq start-up.</p>
+                        <p>Year: 2020</p>
+                        <p>Technology: React</p>
+                        <p>Theme: Theme style based on wire frame from company.</p>   
+                        </div>
                     </>
                 )
           
@@ -57,30 +69,60 @@ export default function OtherProjects(){
                 return(
                     <>
                         <ImageSlider slides={TswaData}/>
+                        <div className='proj-info'>
+                        <p>Info: Screen shots from Ecommerce analytics dashboard made for Taseiq start-up.</p>
+                        <p>Year: 2020</p>
+                        <p>Technology: React</p>
+                        <p>Theme: Theme style based on wire frame from company.</p>   
+                        </div>
                     </>
                 )
             case 3:
                 return(
                     <>
                         <ImageSlider slides={RdData}/>
+                        <div className='proj-info'>
+                        <p>Info: Screen shots from Blog site contract on Upwork made for Razing Dawn.</p>
+                        <p>Year: 2021</p>
+                        <p>Technology: WordPress</p>
+                        <p>Theme: Theme used from Blog Pixie.</p>   
+                        </div>
                     </>
                 )
             case 4:
                 return(
                     <>
                         <TaskTracker/>
+                        <div className='proj-info'>
+                        <p>Info: Task Tracker app to optimize daily activities.</p>
+                        <p>Year: 2021</p>
+                        <p>Technology: React</p>
+                        <p>Theme: Original theme.</p>   
+                        </div>
                     </>
                 )
             case 5:
                 return(
                     <>
                         <Mars/>
+                        <div className='proj-info'>
+                        <p>Info: Photos from mars pulled from NASA API.</p>
+                        <p>Year: 2020</p>
+                        <p>Technology: React</p>
+                        <p>Theme: Original Theme.</p>   
+                        </div>
                     </>
                 )
             case 6:
                 return(
                     <>
                         <CountDown/>
+                        <div className='proj-info'>
+                        <p>Info: A Simple countdown app.</p>
+                        <p>Year: 2018</p>
+                        <p>Technology: React</p>
+                        <p>Theme: Original Theme.</p>   
+                        </div>
                     </>
                 )
             default:

@@ -206,6 +206,12 @@ form button:hover{
     opacity: .7;
     
 }
+.proj-info{
+    margin: 40px;
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+}
 .projectItem h3{
     width: 100%;
     margin-top: 0;
