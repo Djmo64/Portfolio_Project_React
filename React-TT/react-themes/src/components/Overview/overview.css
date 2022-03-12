@@ -39,26 +39,19 @@
     }
     .bio{
         padding: 20px;
-    padding-left: 40px;
-    width: 40vw;
-    height: 40vw;
+        font-size: small;
     }
     .overview-container img{
-        width: 40vw;
-        height: 40vw;
-        margin: 15px;
-        right: 4vw;
-        border: 5px solid black;
-        border-radius: 5px;
-        box-shadow: 0px 1px 5px 2px black;
-        top: 75px;
-        position: fixed;
+       display: none;
     }
     .overview-container h1 {
         padding-left: 6px;
         background: black;
         border-radius: 0px 20px;
         width: fit-content;
+    }
+    .stats div{
+        width: 100% !important;
     }
 
 }
