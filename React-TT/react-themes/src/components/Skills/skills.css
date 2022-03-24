@@ -261,6 +261,66 @@
   position: absolute;
   left: 34px; 
 }
+@media screen and (max-width: 780px){
+    .skills-container{
+        display: flex;
+        flex-direction: column;
+    }
+    .card-rating-container{
+        display: none;
+    }
+    .passive-container {
+        width: 90%;
+        /* margin-left: 7%; */
+        display: flex;
+        /* justify-content: space-around; */
+        font-size: larger;
+        flex-wrap: wrap;
+        background: black;
+        padding-bottom: 10px;
+        border-radius: 5px;
+        border: 3px solid gray;
+        box-shadow: 0px 3px 5px 0px;
+    }
+    .passive-container li{
+        width: 165px;
+        margin-top: 20px;
+        color: gold;
+        padding: 5px;
+        animation: glitch 1s linear infinite;
+    }
+    .projectItem {
+        background: gold;
+        color: transparent;
+        padding: 15px;
+        /* width: 53px; */
+        font-size: x-large;
+        border-radius: 5px;
+        text-align: center;
+        box-shadow: 0px 2px 5px 2px black;
+        font-weight: bold;
+        transition: .5s ease;
+        width: 25vw;
+        height: 10vh;
+        margin-top: 5vh;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position-x: center;
+        opacity: .7;}
+    .Active-skill-container{
+        width: 100%;
+    }
+    .project-list {
+        display: flex;
+        height: 90vh;
+        justify-content: space-evenly;
+        padding: 2vw;
+        flex-wrap: wrap;
+    }
+    .float{
+        display: none;
+    }
+}
 
 @keyframes float{
     0%{

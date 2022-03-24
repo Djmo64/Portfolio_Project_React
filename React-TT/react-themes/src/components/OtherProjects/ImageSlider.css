@@ -36,16 +36,16 @@
   .slide{
     opacity: 0;
     transition: .5s ease;
-    max-width: 40vw;
+    max-width: 75vw;
   }
   .slide.active{
     opacity: 1;
     transition: .5s ease;
-    max-width: 40vw;
-    
+    max-width: 60vw;
+    cursor: pointer;
   }
   .c-img{
-    max-width: 40vw;
+    max-width: 60vw;
     border-radius: 5px;
     max-height: 65vh;
   }

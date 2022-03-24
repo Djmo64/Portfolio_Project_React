@@ -376,6 +376,9 @@ body{
     align-items: center;
     justify-content: flex-start;
 }
+.float{
+  display: none;
+}
 .App h1 {
   display: flex;
   flex: 1 1;

@@ -160,6 +160,38 @@
 .rotate-right4 {
   animation: rotate-right4 1s ease forwards;
 }
+@media screen and (max-width: 780px){
+  .blk-circle{
+    display: none;
+  }
+  .arrowleft{
+    display: none;
+  }
+  .arrowright{
+    display: none;
+  }
+  .contact-container{
+    display: none;
+  }
+  .information-outer-container{
+    display: none;
+  }
+  .info-container{
+    height: 100%;
+    padding: 10px;
+    text-align: center;
+    background: white;
+    border: 7px solid gold;
+    position: relative;
+    z-index: 2;
+    margin: 2vh;
+  }
+}
+@media screen and (min-width: 781px){
+  .contacts-mobile{
+    display: none;
+  }
+}
 
 @keyframes rotate-left0 {
   0% {

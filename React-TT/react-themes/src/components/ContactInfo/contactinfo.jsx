@@ -19,7 +19,7 @@ export default function ContactI(props) {
     },
     {
       contact: "Mailing Address",
-      contactInfo: "--- ------- ------- --",
+      contactInfo: "Marietta, GA ",
       contactIcon: house,
     },
     {
@@ -143,6 +143,21 @@ export default function ContactI(props) {
       </div>
     );
   });
+  const cont2 = Contacts.map((c, index) => {
+    return (
+      <div className={"info-container"}>
+        <h2>{c.contact}</h2>
+        <div className="contact-text">
+          <p>
+            <b>{c.contactInfo}</b>
+          </p>
+        </div>
+        <div className="contact-banner">
+          <img alt="somtheing" src={c.contactIcon} />
+        </div>
+      </div>
+    );
+  });
   const nextSlide = () => {
     clockwise();
   };
@@ -154,6 +169,9 @@ export default function ContactI(props) {
       <h1 style={{ background: "black" }} onClick={() => setChoice(null)}>
         Contact Information
       </h1>
+      <div className="contacts-mobile">
+        {cont2}
+      </div>
       <div className={Choice ? "contact-container shift" : "contact-container"}>
         <div
           onClick={() => setChoice(0)}

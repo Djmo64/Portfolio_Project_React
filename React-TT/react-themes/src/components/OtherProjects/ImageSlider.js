@@ -14,7 +14,7 @@ const ImageSlider = ({slides}) =>{
     }
     if(!Array.isArray(slides) || length <= 0){
         return null
-    }
+    } 
     return(
         <div className="main-slider-container">
         <div className="img-slider-container">
@@ -24,7 +24,7 @@ const ImageSlider = ({slides}) =>{
                 return(
                 <div className="slide-img-container">
                 <div className={index === current ? 'slide active' : 'slide' } key={index}>
-                    {index === current && (<img src={slide.image } alt='BWW Camps' className="c-img"/>)}
+                    {index === current && (<img onClick={()=>{window.open(slide.image)}} src={slide.image } alt='BWW Camps' className="c-img"/>)}
                     </div>
                     </div> )
             })}
