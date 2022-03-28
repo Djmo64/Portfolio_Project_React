@@ -56,7 +56,7 @@ function App() {
        <div className="banner">
         <h1>
           <div className="DevName" style={{marginRight:'15px'}}>Darron Moore:</div>
-          Front End Web Developer
+          Front End Developer
         </h1>
         <div className='inset-radius'></div>
         </div>

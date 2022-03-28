@@ -7,7 +7,7 @@ import BBanner from "../../assets/photos/black-banner.png";
 import stars from "../../assets/photos/stars.png";
 
 export default function Skills(props) {
-  const passives = ["Java", "Redux-saga", "MongoDB", "SQL", "Express.js", "HTML"];
+  const passives = ["Web API", "Redux-saga", "MongoDB", "SQL", "Express.js", "Git"];
   const [Flipped, setFlipped] = useState(false);
   
   
@@ -56,7 +56,7 @@ export default function Skills(props) {
             <Progress full="80" />
           </div>
           <div className="skill-meter">
-            <h3>Javascript(Vanilla)</h3>
+            <h3>HTML</h3>
             <Progress full="75" />
           </div>
           <div className="skill-meter">
@@ -67,7 +67,7 @@ export default function Skills(props) {
             <h3>React Native</h3>
             <Progress full="60" />
           </div>
-          <span style={{fontsize: 'small'}}>*For entertainment purposes only</span>
+          {/* <span style={{fontsize: 'small'}}>*For entertainment purposes only</span> */}
         </div>
         <div className="card-rating-container">
           <div

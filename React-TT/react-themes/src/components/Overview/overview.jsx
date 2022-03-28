@@ -6,7 +6,7 @@ export default function overview(props) {
   return (
     <div className="overview-container load">
       <div className="bio">
-        <h1>Darron Moore - Freelance Web Developer</h1>
+        <h1>Darron Moore - Front end Developer</h1>
         <p>
         I am an adaptable software developer currently working as a fulltime freelance developer
          Aiming to leverage proven critical thinking, problem solving, and communication skills;
